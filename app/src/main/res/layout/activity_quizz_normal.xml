@@ -74,8 +74,10 @@
         app:layout_constraintGuide_begin="515dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutAnswer"
         android:layout_width="413dp"
         android:layout_height="100dp"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guidelineEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

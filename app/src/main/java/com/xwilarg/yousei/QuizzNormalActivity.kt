@@ -1,11 +1,13 @@
 package com.xwilarg.yousei
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.gson.Gson
 import kotlin.random.Random
 
@@ -20,11 +22,24 @@ class QuizzNormalActivity : AppCompatActivity() {
     }
 
     fun answer(view: View) {
+        var myAnswer = findViewById<EditText>(R.id.editTextAnswer).text.toString().toLowerCase()
         findViewById<TextView>(R.id.textLastKanji).text = currentKanji.kanji
         findViewById<TextView>(R.id.textAnswerYouTitle).text = "Your answer"
         findViewById<TextView>(R.id.textAnswerHimTitle).text = "Right answer"
-        findViewById<TextView>(R.id.textAnswerYou).text = findViewById<EditText>(R.id.editTextAnswer).text
+        findViewById<TextView>(R.id.textAnswerYou).text = myAnswer
         findViewById<TextView>(R.id.textAnswerHim).text = currentKanji.meaning[0]
+        var isCorrect = false
+        for (m in currentKanji.meaning) {
+            if (myAnswer == m) {
+                isCorrect = true
+                break
+            }
+        }
+        findViewById<ConstraintLayout>(R.id.constraintLayoutAnswer).setBackgroundColor(if (isCorrect) {
+            Color.rgb(200, 255, 200)
+        } else {
+            Color.rgb(255, 200, 200)
+        })
         loadQuestion()
     }
 
