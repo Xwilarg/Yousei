@@ -27,19 +27,31 @@ class QuizzNormalActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.textAnswerYouTitle).text = "Your answer"
         findViewById<TextView>(R.id.textAnswerHimTitle).text = "Right answer"
         findViewById<TextView>(R.id.textAnswerYou).text = myAnswer
-        findViewById<TextView>(R.id.textAnswerHim).text = currentKanji.meaning[0]
+
+        // Check if the answer is correct, wrong or partially correct
         var isCorrect = false
-        for (m in currentKanji.meaning) {
-            if (myAnswer == m) {
-                isCorrect = true
-                break
+        var closestAnswer : String? = null
+        if (!myAnswer.isNullOrBlank()) {
+            for (m in currentKanji.meaning) {
+                if (myAnswer == m) {
+                    closestAnswer = m
+                    isCorrect = true
+                    break
+                }
+                if (closestAnswer == null && (myAnswer.contains(m) || m.contains(myAnswer))) {
+                    closestAnswer = m
+                }
             }
         }
+
         findViewById<ConstraintLayout>(R.id.constraintLayoutAnswer).setBackgroundColor(if (isCorrect) {
             Color.rgb(200, 255, 200)
+        } else if (closestAnswer != null) {
+            Color.rgb(255, 255, 200)
         } else {
             Color.rgb(255, 200, 200)
         })
+        findViewById<TextView>(R.id.textAnswerHim).text = closestAnswer ?: currentKanji.meaning[0]
         loadQuestion()
     }
 
