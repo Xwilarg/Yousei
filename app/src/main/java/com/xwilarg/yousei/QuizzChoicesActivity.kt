@@ -3,7 +3,6 @@ package com.xwilarg.yousei
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import kotlin.random.Random
 
 class QuizzChoicesActivity : QuizzCommon() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,15 +32,7 @@ class QuizzChoicesActivity : QuizzCommon() {
     }
 
     override fun loadQuestionAfter() {
-        var choices = arrayListOf<String>()
-        choices.add(currentKanji.meaning[0])
-        while (choices.size < 4) {
-            var randomChoice = kanjis[Random.nextInt(0, kanjis.size)].meaning[0]
-            if (!choices.contains(randomChoice)) {
-                choices.add(randomChoice)
-            }
-        }
-        choices.shuffle()
+        val choices = learning.getRandomChoices()
         findViewById<Button>(R.id.buttonAnswer1).text = choices[0]
         findViewById<Button>(R.id.buttonAnswer2).text = choices[1]
         findViewById<Button>(R.id.buttonAnswer3).text = choices[2]

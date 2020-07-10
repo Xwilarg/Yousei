@@ -5,7 +5,6 @@ import android.text.Editable
 import android.view.View
 import android.widget.EditText
 
-
 class QuizzNormalActivity : QuizzCommon() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

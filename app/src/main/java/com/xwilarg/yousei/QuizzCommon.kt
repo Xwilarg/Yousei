@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.google.gson.Gson
-import kotlin.random.Random
 
 open class QuizzCommon : AppCompatActivity() {
 
@@ -16,57 +14,41 @@ open class QuizzCommon : AppCompatActivity() {
     }
 
     fun preload() {
-        val content = this.resources.openRawResource(R.raw.jlpt5).bufferedReader().use { it.readText() }
-        kanjis = Gson().fromJson(content, Array<KanjiInfo>::class.java)
+        learning = if (intent.getSerializableExtra("LEARNING_TYPE") == LearningType.KANJI) {
+            KanjiLearning(this.resources.openRawResource(R.raw.jlpt5).bufferedReader().use { it.readText() })
+        } else {
+            HiraganaLearning(this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+        }
         loadQuestion()
     }
 
     open fun checkAnswer(myAnswer: String) {
-        findViewById<TextView>(R.id.textLastKanji).text = currentKanji.kanji
+        findViewById<TextView>(R.id.textLastKanji).text = learning.getCurrent()
         findViewById<TextView>(R.id.textAnswerYouTitle).text = "Your answer"
         findViewById<TextView>(R.id.textAnswerHimTitle).text = "Right answer"
         findViewById<TextView>(R.id.textAnswerYou).text = myAnswer
 
-        // Check if the answer is correct, wrong or partially correct
-        var isCorrect = false
-        var closestAnswer : String? = null
-        if (!myAnswer.isNullOrBlank()) {
-            for (m in currentKanji.meaning) {
-                if (myAnswer == m) {
-                    closestAnswer = m
-                    isCorrect = true
-                    break
-                }
-                if (closestAnswer == null && (myAnswer.contains(m) || m.contains(myAnswer))) {
-                    closestAnswer = m
-                }
-            }
-        }
+        val answer = learning.checkAnswer(myAnswer)
 
-        findViewById<ConstraintLayout>(R.id.ConstraintLayoutAnswer).setBackgroundColor(if (isCorrect) {
+        findViewById<ConstraintLayout>(R.id.ConstraintLayoutAnswer).setBackgroundColor(if (answer.first == IsCorrect.YES) {
             Color.rgb(200, 255, 200)
-        } else if (closestAnswer != null) {
+        } else if (answer.first == IsCorrect.PARTIAL) {
             Color.rgb(255, 255, 200)
         } else {
             Color.rgb(255, 200, 200)
         })
-        findViewById<TextView>(R.id.textAnswerHim).text = closestAnswer ?: currentKanji.meaning[0]
+        findViewById<TextView>(R.id.textAnswerHim).text = answer.second
         loadQuestion()
     }
 
     fun loadQuestion() {
-        currentKanji = kanjis[Random.nextInt(0, kanjis.size)]
-        findViewById<TextView>(R.id.textQuizz).text = currentKanji.kanji
-        findViewById<TextView>(R.id.textQuizzHelp).text = if (currentKanji.kunyomi.isEmpty()) {
-            currentKanji.onyomi?.get(0)
-        } else {
-            currentKanji.kunyomi?.get(0)
-        }
+        val question = learning.getQuestion()
+        findViewById<TextView>(R.id.textQuizz).text = question.first
+        findViewById<TextView>(R.id.textQuizzHelp).text = question.second
         loadQuestionAfter()
     }
 
     open fun loadQuestionAfter() { }
 
-    lateinit var kanjis: Array<KanjiInfo>
-    lateinit var currentKanji: KanjiInfo
+    lateinit var learning: ILearning
 }
