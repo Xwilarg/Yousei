@@ -11,11 +11,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     
-    fun startGameFree(view: View) {
-        startActivity(Intent(this, QuizzNormalActivity::class.java))
+    fun startGameFreeHiragana(view: View) {
+        var intent = Intent(this, QuizzNormalActivity::class.java)
+        intent.putExtra("LEARNING_TYPE", LearningType.HIRAGANA)
+        startActivity(intent)
     }
 
-    fun startGameChoices(view: View) {
-        startActivity(Intent(this, QuizzChoicesActivity::class.java))
+    fun startGameChoicesHiragana(view: View) {
+        var intent = Intent(this, QuizzChoicesActivity::class.java)
+        intent.putExtra("LEARNING_TYPE", LearningType.HIRAGANA)
+        startActivity(intent)
+    }
+
+    fun startGameFreeKanji(view: View) {
+        var intent = Intent(this, QuizzNormalActivity::class.java)
+        intent.putExtra("LEARNING_TYPE", LearningType.KANJI)
+        startActivity(intent)
+    }
+
+    fun startGameChoicesKanji(view: View) {
+        var intent = Intent(this, QuizzChoicesActivity::class.java)
+        intent.putExtra("LEARNING_TYPE", LearningType.KANJI)
+        startActivity(intent)
     }
 }
