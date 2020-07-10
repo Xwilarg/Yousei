@@ -4,18 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizzNormalActivity">
-
-    <TextView
-        android:id="@+id/textQuizz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineMainSeparator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".QuizzChoicesActivity">
 
     <TextView
         android:id="@+id/textQuizzHelp"
@@ -27,6 +16,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textQuizz" />
+
+    <TextView
+        android:id="@+id/textQuizz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMainSeparator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineMainSeparator"
@@ -45,14 +45,44 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineMainSeparator">
 
         <Button
-            android:id="@+id/buttonAnswer"
+            android:id="@+id/buttonAnswer1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="answer"
-            android:text="Send"
+            android:onClick="answer1"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineAnswerSeparatorHorizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineAnswerSeparatorVertical"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonAnswer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="answer2"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineAnswerSeparatorHorizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineAnswerSeparatorVertical"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonAnswer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="answer3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineAnswerSeparatorVertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guidelineAnswerSeparatorHorizontal" />
+
+        <Button
+            android:id="@+id/buttonAnswer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="answer4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineAnswerSeparatorVertical"
             app:layout_constraintTop_toTopOf="@+id/guidelineAnswerSeparatorHorizontal" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -62,18 +92,12 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent=".5" />
 
-        <EditText
-            android:id="@+id/editTextAnswer"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineAnswerSeparatorVertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Answer"
-            android:inputType="textPersonName"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineAnswerSeparatorHorizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -166,5 +190,4 @@
             app:layout_constraintGuide_begin="108dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

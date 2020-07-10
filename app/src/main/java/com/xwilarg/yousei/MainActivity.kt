@@ -11,7 +11,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     
-    fun startGame(view: View) {
+    fun startGameFree(view: View) {
         startActivity(Intent(this, QuizzNormalActivity::class.java))
+    }
+
+    fun startGameChoices(view: View) {
+        startActivity(Intent(this, QuizzChoicesActivity::class.java))
     }
 }
