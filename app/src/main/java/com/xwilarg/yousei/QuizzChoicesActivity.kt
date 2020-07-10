@@ -3,7 +3,6 @@ package com.xwilarg.yousei
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import kotlin.random.Random
 
 class QuizzChoicesActivity : QuizzCommon() {

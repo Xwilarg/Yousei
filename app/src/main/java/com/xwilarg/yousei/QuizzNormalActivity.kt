@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.EditText
-import kotlin.random.Random
 
 
 class QuizzNormalActivity : QuizzCommon() {

@@ -2,8 +2,6 @@ package com.xwilarg.yousei;
 
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
