@@ -34,4 +34,16 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("LEARNING_TYPE", LearningType.KANJI)
         startActivity(intent)
     }
+
+    fun startGameFreeVocabulary(view: View) {
+        var intent = Intent(this, QuizzNormalActivity::class.java)
+        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY)
+        startActivity(intent)
+    }
+
+    fun startGameChoicesVocabulary(view: View) {
+        var intent = Intent(this, QuizzChoicesActivity::class.java)
+        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY)
+        startActivity(intent)
+    }
 }

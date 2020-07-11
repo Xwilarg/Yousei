@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hiragana Learning"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +21,19 @@
         android:id="@+id/textTitleKanji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kanji Learning"
-        android:textSize="30sp"
+        android:text="Kanji Learning (JLPT 5)"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
+
+    <TextView
+        android:id="@+id/textTitleVocabulary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vocabulary Learning (JLPT 5)"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,16 +95,38 @@
         android:layout_height="wrap_content"
         android:onClick="startGameFreeKanji"
         android:text="Free Text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
 
     <Button
         android:id="@+id/launchButtonChoicesHiragana2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startGameChoicesKanji"
+        android:text="Choices"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
+
+    <Button
+        android:id="@+id/launchButtonFreeVocabulary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startGameFreeVocabulary"
+        android:text="Free Text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
+
+    <Button
+        android:id="@+id/launchButtonChoicesVocabulary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startGameChoicesVocabulary"
         android:text="Choices"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

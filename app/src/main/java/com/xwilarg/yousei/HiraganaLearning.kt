@@ -4,9 +4,9 @@ import com.google.gson.Gson
 import kotlin.random.Random
 import com.google.gson.reflect.TypeToken
 
-class HiraganaLearning() : ILearning {
+class HiraganaLearning : ILearning {
 
-    constructor(content: String) : this() {
+    constructor(content: String) {
         hiraganas = Gson().fromJson(content, object : TypeToken<Map<String, String>>() {}.type)
     }
 
