@@ -12,8 +12,8 @@ There are a lot of app out there but there are some important points I'ld like t
 So that's why I'm making this app, it's my first time using Android Studio (and my Japanese is pretty weak too) so please don't except too much from this project.
 
 ## Download it
-At the time I'm writing this, the app isn't available yet<br/>
-But once it'll be, you'll be able to download from the [release page](https://github.com/Xwilarg/Yousei/releases) (and maybe later on the Google Play store)
+**Please make note that I'm still actively working on the app and that the current alpha versions doesn't contains all the features said above yet**<br/>
+You can download the current version of the app on the [release page](https://github.com/Xwilarg/Yousei/releases)
 
 ## Others
-[Kanjis files](app/src/main/res/raw) are generated using [JishoParser](https://github.com/Xwilarg/JishoParser)
+[Kanjis files](app/src/main/res/raw) are generated using [JishoParser](https://github.com/Xwilarg/JishoParser), [Jisho](https://jisho.org/) and [EDRDG](https://www.edrdg.org/)
