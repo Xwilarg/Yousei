@@ -14,12 +14,15 @@ open class QuizzCommon : AppCompatActivity() {
     }
 
     fun preload() {
-        learning = if (intent.getSerializableExtra("LEARNING_TYPE") == LearningType.KANJI) {
+        var intentValue = intent.getSerializableExtra("LEARNING_TYPE")
+        learning = if (intentValue == LearningType.KANJI) {
             KanjiLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() })
-        } else if (intent.getSerializableExtra("LEARNING_TYPE") == LearningType.VOCABULARY) {
+        } else if (intentValue == LearningType.VOCABULARY) {
             VocabularyLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() })
-        } else {
+        } else if (intentValue == LearningType.HIRAGANA) {
             HiraganaLearning(this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+        } else {
+            HiraganaLearning(this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
         }
         loadQuestion()
     }

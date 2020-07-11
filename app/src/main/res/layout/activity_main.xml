@@ -6,45 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textTitleHiragana"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hiragana Learning"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textTitleKanji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kanji Learning (JLPT 5)"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
-
-    <TextView
-        android:id="@+id/textTitleVocabulary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vocabulary Learning (JLPT 5)"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
-
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineTitle1"
+        android:id="@+id/guidelineVertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".25" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTitle2"
@@ -54,82 +21,106 @@
         app:layout_constraintGuide_percent=".75" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".5" />
 
-    <Button
-        android:id="@+id/launchButtonFreeHiragana"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameFreeHiragana"
-        android:text="Free Text"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".25" />
+
+    <TextView
+        android:id="@+id/textTitleGameMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game Mode"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/launchButtonChoicesHiragana"
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameChoicesHiragana"
-        android:text="Choices"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/launchButtonFreeKanji"
+        <RadioButton
+            android:id="@+id/radioChoices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Choices" />
+
+        <RadioButton
+            android:id="@+id/radioFreeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Free Text" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textTitleQuizzes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameFreeKanji"
-        android:text="Free Text"
+        android:text="Quizzes"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
+
+    <Button
+        android:id="@+id/buttonQuizzHiragana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startGameHiragana"
+        android:text="Hiragana"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
 
     <Button
-        android:id="@+id/launchButtonChoicesHiragana2"
+        android:id="@+id/buttonQuizzKatakana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameChoicesKanji"
-        android:text="Choices"
+        android:onClick="startGameKatakana"
+        android:text="Katakana"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
         app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
 
     <Button
-        android:id="@+id/launchButtonFreeVocabulary"
+        android:id="@+id/buttonQuizzKanji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameFreeVocabulary"
-        android:text="Free Text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="startGameKanji"
+        android:text="Kanji (JLPT 5)"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
     <Button
-        android:id="@+id/launchButtonChoicesVocabulary"
+        android:id="@+id/buttonQuizzVocabulary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameChoicesVocabulary"
-        android:text="Choices"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="startGameVocabulary"
+        android:text="Vocabulary (JLPT 5)"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
