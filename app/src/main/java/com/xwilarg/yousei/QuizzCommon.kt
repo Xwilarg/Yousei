@@ -23,10 +23,14 @@ open class QuizzCommon : AppCompatActivity() {
             HiraganaLearning(this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
         } else if (intentValue == LearningType.KATAKANA) {
             HiraganaLearning(this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
-        } else {
+        } else if (intentValue == LearningType.SENTENCE) {
             SentenceLearning(this.resources.openRawResource(R.raw.sentences).bufferedReader().use { it.readText() }
                 , this.resources.openRawResource(R.raw.particles).bufferedReader().use { it.readText() }
                 , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+        } else {
+            ReadingLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() }
+                , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() }
+                , this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
         }
         // Since sentences are big the text size
         if (intentValue == LearningType.SENTENCE) {

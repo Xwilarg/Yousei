@@ -64,30 +64,7 @@ class SentenceLearning : ILearning {
     }
 
     override fun getAnswer(answer: String): String { // Convert the answer that is probably in romaji to hiragana (used for answer with input text)
-        var word = ""
-        var currAnswer = answer
-        while (currAnswer.isNotEmpty()) {
-            if (currAnswer.length == 1) {
-                if (hiraganas.containsKey(currAnswer.substring(0, 1))) {
-                    word += hiraganas[currAnswer]
-                } else {
-                    word += currAnswer
-                }
-                break
-            }
-            if (hiraganas.containsKey(currAnswer.substring(0, 2))) {
-                word += hiraganas[currAnswer.substring(0, 2)]
-                currAnswer = currAnswer.substring(2)
-            } else if (hiraganas.containsKey(currAnswer.substring(0, 1))) {
-                word += hiraganas[currAnswer.substring(0, 1)]
-                currAnswer = currAnswer.substring(1)
-            } else {
-                word += currAnswer[0]
-                currAnswer = currAnswer.substring(1)
-                continue
-            }
-        }
-        return word
+        return UtilsLearning.convertString(answer, hiraganas)
     }
 
     var sentences: Array<SentenceInfo>
@@ -96,5 +73,5 @@ class SentenceLearning : ILearning {
     lateinit var particleAnswer: String
     lateinit var currentSentence: SentenceInfo
 
-    lateinit var hiraganas: Map<String, String>
+    var hiraganas: Map<String, String>
 }

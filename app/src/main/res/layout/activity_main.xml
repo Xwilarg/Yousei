@@ -113,11 +113,11 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
     <Button
-        android:id="@+id/buttonQuizzVocabulary"
+        android:id="@+id/buttonQuizzReading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameVocabulary"
-        android:text="Vocabulary (JLPT 5)"
+        android:onClick="startGameReading"
+        android:text="Reading (JLPT 5)"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
@@ -134,5 +134,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintVertical_bias="0.492" />
+
+    <Button
+        android:id="@+id/buttonQuizzVocabulary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startGameVocabulary"
+        android:text="Vocabulary (JLPT 5)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
