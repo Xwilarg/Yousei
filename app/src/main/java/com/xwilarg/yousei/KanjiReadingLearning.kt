@@ -24,7 +24,7 @@ class KanjiReadingLearning : ILearning {
         var closestAnswer : String? = null
         if (!myAnswer.isNullOrBlank()) {
             // We need to check if the answer is correct, looking in the onyomi and the kunyomi
-            var kanaAnswer = UtilsLearning.convertString(myAnswer, hiraganas)
+            var kanaAnswer = UtilsLearning.convertStringHiragana(myAnswer, hiraganas)
             for (m in currentKanji.onyomi) {
                 if (kanaAnswer == m) {
                     return Pair(IsCorrect.YES, m)
@@ -33,7 +33,7 @@ class KanjiReadingLearning : ILearning {
                     closestAnswer = m
                 }
             }
-            kanaAnswer = UtilsLearning.convertString(kanaAnswer, katakanas)
+            kanaAnswer = UtilsLearning.convertStringKatakana(kanaAnswer, katakanas)
             for (m in currentKanji.kunyomi) {
                 if (kanaAnswer == m) {
                     return Pair(IsCorrect.YES, m)
@@ -93,7 +93,7 @@ class KanjiReadingLearning : ILearning {
     }
 
     override fun getAnswer(answer: String): String {
-        return UtilsLearning.convertString(answer, hiraganas)
+        return UtilsLearning.convertStringHiragana(answer, hiraganas)
     }
 
     var kanjis: Array<KanjiInfo>

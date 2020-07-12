@@ -43,7 +43,7 @@ class VocabularyReadingLearning : ILearning {
     }
 
     override fun getAnswer(answer: String): String {
-        return UtilsLearning.convertString(answer, hiraganas)
+        return UtilsLearning.convertStringHiragana(answer, hiraganas)
     }
 
     var words: Array<VocabularyInfo>

@@ -64,7 +64,7 @@ class SentenceLearning : ILearning {
     }
 
     override fun getAnswer(answer: String): String { // Convert the answer that is probably in romaji to hiragana (used for answer with input text)
-        return UtilsLearning.convertString(answer, hiraganas)
+        return UtilsLearning.convertStringHiragana(answer, hiraganas)
     }
 
     var sentences: Array<SentenceInfo>
