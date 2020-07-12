@@ -123,4 +123,16 @@
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
         app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
+    <Button
+        android:id="@+id/buttonQuizzParticles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startGameSentence"
+        android:text="Particles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal"
+        app:layout_constraintVertical_bias="0.492" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,5 +4,6 @@ enum class LearningType {
     HIRAGANA,
     KATAKANA,
     KANJI,
-    VOCABULARY
+    VOCABULARY,
+    SENTENCE
 }

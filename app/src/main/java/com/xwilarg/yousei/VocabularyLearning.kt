@@ -50,6 +50,6 @@ class VocabularyLearning : ILearning {
         return choices
     }
 
-    lateinit var words: Array<VocabularyInfo>
+    var words: Array<VocabularyInfo>
     lateinit var currentWord: VocabularyInfo
 }

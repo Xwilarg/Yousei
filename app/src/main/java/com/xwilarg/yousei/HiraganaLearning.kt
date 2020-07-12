@@ -43,6 +43,6 @@ class HiraganaLearning : ILearning {
         return choices
     }
 
-    lateinit var hiraganas: Map<String, String>
+    var hiraganas: Map<String, String>
     lateinit var currentHiragana: Pair<String, String>
 }

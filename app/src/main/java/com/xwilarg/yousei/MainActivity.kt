@@ -36,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun startGameSentence(view: View) {
+        var intent = Intent(this, getQuizzType())
+        intent.putExtra("LEARNING_TYPE", LearningType.SENTENCE)
+        startActivity(intent)
+    }
+
     fun getQuizzType() : Class<*> {
         return if (findViewById<RadioButton>(R.id.radioChoices).isChecked) {
             QuizzChoicesActivity::class.java

@@ -54,6 +54,6 @@ class KanjiLearning : ILearning {
         return choices
     }
 
-    lateinit var kanjis: Array<KanjiInfo>
+    var kanjis: Array<KanjiInfo>
     lateinit var currentKanji: KanjiInfo
 }
