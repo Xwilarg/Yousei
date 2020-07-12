@@ -18,7 +18,7 @@ class VocabularyReadingLearning : ILearning {
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
-        return Pair(if (myAnswer == currentWord.reading) {
+        return Pair(if (UtilsLearning.convertStringHiragana(myAnswer, hiraganas) == currentWord.reading) {
             IsCorrect.YES
         } else {
             IsCorrect.NO

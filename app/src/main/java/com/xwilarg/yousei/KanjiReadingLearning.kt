@@ -40,12 +40,11 @@ class KanjiReadingLearning : ILearning {
                 m = m.replace("-", "")
                 if (m.contains(".")) {
                     if (kanaAnswer == m.replace(".", "")) {
-                        answerKana = kanaAnswer
                         return Pair(IsCorrect.YES, m)
                     }
                     m = m.split(".")[0]
                 }
-                if (kanaAnswer == m) {
+                if (kanaAnswer == m || kanaAnswer == mTmp) {
                     return Pair(IsCorrect.YES, m)
                 }
                 if (closestAnswer == null && (kanaAnswer.contains(m) || m.contains(kanaAnswer))) {
