@@ -1,5 +1,8 @@
 # Yousei
-An android app to help learning Japanese 
+An android app to help learning Japanese
+
+<img src="preview/01.jpg" width="250" alt="Preview 01"/> <img src="preview/02.jpg" width="250" alt="Preview 02"/><br/>
+<sup>Preview images are from the version 1.1.0-alpha</sup>
 
 ## Phylosophy
 Yet another application to learn Japanese... But why?<br/>
