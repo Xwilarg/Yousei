@@ -35,7 +35,16 @@ class KanjiReadingLearning : ILearning {
                 }
             }
             kanaAnswer = UtilsLearning.convertStringHiragana(myAnswer, hiraganas)
-            for (m in currentKanji.kunyomi) {
+            for (mTmp in currentKanji.kunyomi) {
+                var m = mTmp
+                m = m.replace("-", "")
+                if (m.contains(".")) {
+                    if (kanaAnswer == m.replace(".", "")) {
+                        answerKana = kanaAnswer
+                        return Pair(IsCorrect.YES, m)
+                    }
+                    m = m.split(".")[0]
+                }
                 if (kanaAnswer == m) {
                     return Pair(IsCorrect.YES, m)
                 }

@@ -31,12 +31,16 @@ object UtilsLearning {
             } else {
                 null
             }
+            if (currAnswer.length > 2 && refDict.containsKey(currAnswer.substring(0, 3))) { // chi, shi
+                word += refDict[currAnswer.substring(0, 3)]
+                currAnswer = currAnswer.substring(3)
+            }
             // Diphthongs, like in ryu
             // if word length is bigger than 2
             // if second letter is y and xi is valid (example: ryu -> ri)
             // or if second letter is h and xhi is valid (example: chotto -> chi)
             // With that, the third letter must be a, u or o
-            if (thirdLetter != null
+            else if (thirdLetter != null
                     && ((currAnswer[1] == 'y' && refDict.containsKey(currAnswer[0] + "i"))
                     || (currAnswer[1] == 'h' && refDict.containsKey(currAnswer[0] + "hi")))
                 && (thirdLetter == 'a' || thirdLetter == 'u' || thirdLetter == 'o')) {
