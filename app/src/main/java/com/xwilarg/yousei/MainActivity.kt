@@ -30,15 +30,21 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun startGameReading(view: View) {
+    fun startGameKanjiReading(view: View) {
         var intent = Intent(this, getQuizzType())
-        intent.putExtra("LEARNING_TYPE", LearningType.READING)
+        intent.putExtra("LEARNING_TYPE", LearningType.KANJI_READING)
         startActivity(intent)
     }
 
     fun startGameVocabulary(view: View) {
         var intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY)
+        startActivity(intent)
+    }
+
+    fun startGameVocabularyReading(view: View) {
+        var intent = Intent(this, getQuizzType())
+        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY_READING)
         startActivity(intent)
     }
 

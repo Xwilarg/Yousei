@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlin.random.Random
 
-class ReadingLearning : ILearning {
+class KanjiReadingLearning : ILearning {
 
     constructor(content: String, contentHiraganas: String, contentKatakanas: String) {
         kanjis = Gson().fromJson(content, Array<KanjiInfo>::class.java)

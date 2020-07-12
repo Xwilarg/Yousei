@@ -27,10 +27,13 @@ open class QuizzCommon : AppCompatActivity() {
             SentenceLearning(this.resources.openRawResource(R.raw.sentences).bufferedReader().use { it.readText() }
                 , this.resources.openRawResource(R.raw.particles).bufferedReader().use { it.readText() }
                 , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
-        } else {
-            ReadingLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() }
+        } else if (intentValue == LearningType.KANJI_READING) {
+            KanjiReadingLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() }
                 , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() }
                 , this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
+        } else {
+            VocabularyReadingLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() }
+                , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
         }
         // Since sentences are big the text size
         if (intentValue == LearningType.SENTENCE) {
