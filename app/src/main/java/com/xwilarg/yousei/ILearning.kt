@@ -11,4 +11,6 @@ interface ILearning {
     fun getCurrent() : String
 
     fun getRandomChoices() : ArrayList<String>
+
+    fun getAnswer(answer: String) : String
 }

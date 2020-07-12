@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.EditText
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class QuizzNormalActivity : QuizzCommon() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +15,7 @@ class QuizzNormalActivity : QuizzCommon() {
     }
 
     fun answer(view: View) {
-        checkAnswer(findViewById<EditText>(R.id.editTextAnswer).text.toString().toLowerCase())
+        checkAnswer(learning.getAnswer(findViewById<EditText>(R.id.editTextAnswer).text.toString().toLowerCase()))
     }
 
     override fun loadQuestionAfter() {

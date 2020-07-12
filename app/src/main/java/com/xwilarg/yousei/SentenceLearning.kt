@@ -1,13 +1,17 @@
 package com.xwilarg.yousei
 
+import android.widget.EditText
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlin.random.Random
 
 class SentenceLearning : ILearning {
 
-    constructor(content: String, contentParticles: String) {
+    constructor(content: String, contentParticles: String, contentHiraganas: String) {
         sentences = Gson().fromJson(content, Array<SentenceInfo>::class.java)
         particles = Gson().fromJson(contentParticles, Array<String>::class.java)
+        hiraganas = Gson().fromJson(contentHiraganas, object : TypeToken<Map<String, String>>() {}.type)
+        hiraganas = hiraganas.entries.associateBy({ it.value }) {it.key}
     }
 
     override fun getQuestion() : Pair<String, String> {
@@ -59,9 +63,38 @@ class SentenceLearning : ILearning {
         return choices
     }
 
+    override fun getAnswer(answer: String): String { // Convert the answer that is probably in romaji to hiragana (used for answer with input text)
+        var word = ""
+        var currAnswer = answer
+        while (currAnswer.isNotEmpty()) {
+            if (currAnswer.length == 1) {
+                if (hiraganas.containsKey(currAnswer.substring(0, 1))) {
+                    word += hiraganas[currAnswer]
+                } else {
+                    word += currAnswer
+                }
+                break
+            }
+            if (hiraganas.containsKey(currAnswer.substring(0, 2))) {
+                word += hiraganas[currAnswer.substring(0, 2)]
+                currAnswer = currAnswer.substring(2)
+            } else if (hiraganas.containsKey(currAnswer.substring(0, 1))) {
+                word += hiraganas[currAnswer.substring(0, 1)]
+                currAnswer = currAnswer.substring(1)
+            } else {
+                word += currAnswer[0]
+                currAnswer = currAnswer.substring(1)
+                continue
+            }
+        }
+        return word
+    }
+
     var sentences: Array<SentenceInfo>
     var particles: Array<String>
     lateinit var fullSentence: String
     lateinit var particleAnswer: String
     lateinit var currentSentence: SentenceInfo
+
+    lateinit var hiraganas: Map<String, String>
 }

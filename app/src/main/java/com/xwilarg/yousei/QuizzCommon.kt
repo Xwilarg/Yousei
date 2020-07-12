@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 
 open class QuizzCommon : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quizz_choices)
@@ -26,7 +25,8 @@ open class QuizzCommon : AppCompatActivity() {
             HiraganaLearning(this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
         } else {
             SentenceLearning(this.resources.openRawResource(R.raw.sentences).bufferedReader().use { it.readText() }
-                , this.resources.openRawResource(R.raw.particles).bufferedReader().use { it.readText() })
+                , this.resources.openRawResource(R.raw.particles).bufferedReader().use { it.readText() }
+                , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
         }
         // Since sentences are big the text size
         if (intentValue == LearningType.SENTENCE) {

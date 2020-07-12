@@ -50,6 +50,10 @@ class VocabularyLearning : ILearning {
         return choices
     }
 
+    override fun getAnswer(answer: String): String {
+        return answer
+    }
+
     var words: Array<VocabularyInfo>
     lateinit var currentWord: VocabularyInfo
 }

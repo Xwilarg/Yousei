@@ -43,6 +43,10 @@ class HiraganaLearning : ILearning {
         return choices
     }
 
+    override fun getAnswer(answer: String): String {
+        return answer
+    }
+
     var hiraganas: Map<String, String>
     lateinit var currentHiragana: Pair<String, String>
 }

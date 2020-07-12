@@ -54,6 +54,10 @@ class KanjiLearning : ILearning {
         return choices
     }
 
+    override fun getAnswer(answer: String): String {
+        return answer
+    }
+
     var kanjis: Array<KanjiInfo>
     lateinit var currentKanji: KanjiInfo
 }
