@@ -39,7 +39,7 @@ class SentenceLearning : ILearning {
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
-        return Pair(if (myAnswer == particleAnswer) {
+        return Pair(if (UtilsLearning.convertStringHiragana(myAnswer, hiraganas) == particleAnswer) {
             IsCorrect.YES
         } else {
             IsCorrect.NO
@@ -63,7 +63,7 @@ class SentenceLearning : ILearning {
         return choices
     }
 
-    override fun getAnswer(answer: String): String { // Convert the answer that is probably in romaji to hiragana (used for answer with input text)
+    override fun getAnswer(answer: String): String {
         return UtilsLearning.convertStringHiragana(answer, hiraganas)
     }
 

@@ -15,7 +15,7 @@ class QuizzNormalActivity : QuizzCommon() {
     }
 
     fun answer(view: View) {
-        checkAnswer(learning.getAnswer(findViewById<EditText>(R.id.editTextAnswer).text.toString().toLowerCase()))
+        checkAnswer(findViewById<EditText>(R.id.editTextAnswer).text.toString().toLowerCase())
     }
 
     override fun loadQuestionAfter() {

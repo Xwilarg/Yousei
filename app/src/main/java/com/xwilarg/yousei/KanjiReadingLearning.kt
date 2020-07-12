@@ -20,20 +20,21 @@ class KanjiReadingLearning : ILearning {
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
-        var isCorrect = false
+        answerKana = myAnswer
         var closestAnswer : String? = null
         if (!myAnswer.isNullOrBlank()) {
             // We need to check if the answer is correct, looking in the onyomi and the kunyomi
-            var kanaAnswer = UtilsLearning.convertStringHiragana(myAnswer, hiraganas)
+            var kanaAnswer = UtilsLearning.convertStringKatakana(myAnswer, katakanas)
             for (m in currentKanji.onyomi) {
                 if (kanaAnswer == m) {
+                    answerKana = kanaAnswer
                     return Pair(IsCorrect.YES, m)
                 }
                 if (closestAnswer == null && (kanaAnswer.contains(m) || m.contains(kanaAnswer))) {
                     closestAnswer = m
                 }
             }
-            kanaAnswer = UtilsLearning.convertStringKatakana(kanaAnswer, katakanas)
+            kanaAnswer = UtilsLearning.convertStringHiragana(myAnswer, hiraganas)
             for (m in currentKanji.kunyomi) {
                 if (kanaAnswer == m) {
                     return Pair(IsCorrect.YES, m)
@@ -84,20 +85,23 @@ class KanjiReadingLearning : ILearning {
         return choices
     }
 
-    fun kanjiInfoToKana(kanji: KanjiInfo): String {
+    private fun kanjiInfoToKana(kanji: KanjiInfo): String {
         return if (kanji.kunyomi.isEmpty()) {
-            kanji.onyomi?.get(0)
+            kanji.onyomi[0]
         } else {
-            kanji.kunyomi?.get(0)
+            kanji.kunyomi[0]
         }
     }
 
     override fun getAnswer(answer: String): String {
-        return UtilsLearning.convertStringHiragana(answer, hiraganas)
+        return UtilsLearning.convertStringHiragana(answerKana, hiraganas)
     }
 
     var kanjis: Array<KanjiInfo>
     lateinit var currentKanji: KanjiInfo
+    // We keep track of the answer here because when answering in this quizz, the answer is automatically converted from romaji to hiragana
+    // But when we find a good answer in katakana, we fill this with it so the conversion can't be made and the answer stay in katakana
+    lateinit var answerKana: String
 
     var hiraganas: Map<String, String>
     var katakanas: Map<String, String>

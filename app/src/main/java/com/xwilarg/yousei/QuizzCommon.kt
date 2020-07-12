@@ -15,25 +15,33 @@ open class QuizzCommon : AppCompatActivity() {
     fun preload() {
         // Load the right file in the right learning class given the intent from the main menu
         var intentValue = intent.getSerializableExtra("LEARNING_TYPE")
-        learning = if (intentValue == LearningType.KANJI) {
-            KanjiLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() })
-        } else if (intentValue == LearningType.VOCABULARY) {
-            VocabularyLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() })
-        } else if (intentValue == LearningType.HIRAGANA) {
-            HiraganaLearning(this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
-        } else if (intentValue == LearningType.KATAKANA) {
-            HiraganaLearning(this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
-        } else if (intentValue == LearningType.SENTENCE) {
-            SentenceLearning(this.resources.openRawResource(R.raw.sentences).bufferedReader().use { it.readText() }
-                , this.resources.openRawResource(R.raw.particles).bufferedReader().use { it.readText() }
-                , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
-        } else if (intentValue == LearningType.KANJI_READING) {
-            KanjiReadingLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() }
-                , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() }
-                , this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
-        } else {
-            VocabularyReadingLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() }
-                , this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+        learning = when (intentValue) {
+            LearningType.KANJI -> {
+                KanjiLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() })
+            }
+            LearningType.VOCABULARY -> {
+                VocabularyLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() })
+            }
+            LearningType.HIRAGANA -> {
+                HiraganaLearning(this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+            }
+            LearningType.KATAKANA -> {
+                HiraganaLearning(this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
+            }
+            LearningType.SENTENCE -> {
+                SentenceLearning(this.resources.openRawResource(R.raw.sentences).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.particles).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+            }
+            LearningType.KANJI_READING -> {
+                KanjiReadingLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
+            }
+            else -> {
+                VocabularyReadingLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+            }
         }
         // Since sentences are big the text size
         if (intentValue == LearningType.SENTENCE) {
@@ -47,20 +55,27 @@ open class QuizzCommon : AppCompatActivity() {
         findViewById<TextView>(R.id.textLastKanji).text = learning.getCurrent()
         findViewById<TextView>(R.id.textAnswerYouTitle).text = "Your answer"
         findViewById<TextView>(R.id.textAnswerHimTitle).text = "Right answer"
-        findViewById<TextView>(R.id.textAnswerYou).text = myAnswer
 
+        // These 2 lines must be called in this order because of KanjiReadingLearning initialising some stuffs in checkAnswer for getAnswer
         val answer = learning.checkAnswer(myAnswer)
+        findViewById<TextView>(R.id.textAnswerYou).text = learning.getAnswer(myAnswer)
 
         // If the answer is right, display green
         // If it's wrong, red
         // If it's partially correct, yellow
-        findViewById<ConstraintLayout>(R.id.ConstraintLayoutAnswer).setBackgroundColor(if (answer.first == IsCorrect.YES) {
-            Color.rgb(200, 255, 200)
-        } else if (answer.first == IsCorrect.PARTIAL) {
-            Color.rgb(255, 255, 200)
-        } else {
-            Color.rgb(255, 200, 200)
-        })
+        findViewById<ConstraintLayout>(R.id.ConstraintLayoutAnswer).setBackgroundColor(
+            when (answer.first) {
+                IsCorrect.YES -> {
+                    Color.rgb(200, 255, 200)
+                }
+                IsCorrect.PARTIAL -> {
+                    Color.rgb(255, 255, 200)
+                }
+                else -> {
+                    Color.rgb(255, 200, 200)
+                }
+            }
+        )
         // Display in the answer the last question
         findViewById<TextView>(R.id.textAnswerHim).text = answer.second
         loadQuestion()
