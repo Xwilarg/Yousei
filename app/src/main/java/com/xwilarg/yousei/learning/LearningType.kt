@@ -1,4 +1,4 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
 enum class LearningType {
     HIRAGANA,

@@ -1,10 +1,13 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
+import com.xwilarg.yousei.R
+import com.xwilarg.yousei.quizz.QuizzChoicesActivity
+import com.xwilarg.yousei.quizz.QuizzNormalActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

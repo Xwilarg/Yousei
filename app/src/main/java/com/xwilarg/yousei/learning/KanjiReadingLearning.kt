@@ -1,7 +1,8 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.xwilarg.yousei.quizz.IsCorrect
 import kotlin.random.Random
 
 class KanjiReadingLearning : ILearning {
@@ -24,7 +25,11 @@ class KanjiReadingLearning : ILearning {
         var closestAnswer : String? = null
         if (!myAnswer.isNullOrBlank()) {
             // We need to check if the answer is correct, looking in the onyomi and the kunyomi
-            var kanaAnswer = UtilsLearning.convertStringKatakana(myAnswer, katakanas)
+            var kanaAnswer =
+                UtilsLearning.convertStringKatakana(
+                    myAnswer,
+                    katakanas
+                )
             for (m in currentKanji.onyomi) {
                 if (kanaAnswer == m) {
                     answerKana = kanaAnswer
@@ -34,7 +39,10 @@ class KanjiReadingLearning : ILearning {
                     closestAnswer = m
                 }
             }
-            kanaAnswer = UtilsLearning.convertStringHiragana(myAnswer, hiraganas)
+            kanaAnswer = UtilsLearning.convertStringHiragana(
+                myAnswer,
+                hiraganas
+            )
             for (mTmp in currentKanji.kunyomi) {
                 var m = mTmp
                 m = m.replace("-", "")
@@ -102,7 +110,10 @@ class KanjiReadingLearning : ILearning {
     }
 
     override fun getAnswer(answer: String): String {
-        return UtilsLearning.convertStringHiragana(answerKana, hiraganas)
+        return UtilsLearning.convertStringHiragana(
+            answerKana,
+            hiraganas
+        )
     }
 
     var kanjis: Array<KanjiInfo>

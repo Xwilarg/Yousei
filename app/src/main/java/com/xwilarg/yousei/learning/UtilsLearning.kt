@@ -1,12 +1,26 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
 object UtilsLearning {
     fun convertStringHiragana(str: String, refDict: Map<String, String>): String {
-        return convertString(str, refDict, 'っ', 'ゃ', 'ゅ', 'ょ')
+        return convertString(
+            str,
+            refDict,
+            'っ',
+            'ゃ',
+            'ゅ',
+            'ょ'
+        )
     }
 
     fun convertStringKatakana(str: String, refDict: Map<String, String>): String {
-        return convertString(str, refDict, 'ッ', 'ャ', 'ュ', 'ョ')
+        return convertString(
+            str,
+            refDict,
+            'ッ',
+            'ャ',
+            'ュ',
+            'ョ'
+        )
     }
 
     // Convert a string using a Map

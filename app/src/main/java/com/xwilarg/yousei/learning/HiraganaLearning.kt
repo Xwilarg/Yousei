@@ -1,8 +1,9 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
 import com.google.gson.Gson
 import kotlin.random.Random
 import com.google.gson.reflect.TypeToken
+import com.xwilarg.yousei.quizz.IsCorrect
 
 class HiraganaLearning : ILearning {
 

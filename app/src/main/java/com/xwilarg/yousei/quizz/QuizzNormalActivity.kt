@@ -1,11 +1,10 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.quizz
 
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.EditText
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.xwilarg.yousei.R
 
 class QuizzNormalActivity : QuizzCommon() {
     override fun onCreate(savedInstanceState: Bundle?) {

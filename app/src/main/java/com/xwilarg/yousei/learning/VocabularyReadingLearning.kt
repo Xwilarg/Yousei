@@ -1,7 +1,8 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.xwilarg.yousei.quizz.IsCorrect
 import kotlin.random.Random
 
 class VocabularyReadingLearning : ILearning {

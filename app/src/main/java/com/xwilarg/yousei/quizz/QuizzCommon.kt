@@ -1,10 +1,12 @@
-package com.xwilarg.yousei;
+package com.xwilarg.yousei.quizz;
 
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.xwilarg.yousei.*
+import com.xwilarg.yousei.learning.*
 
 open class QuizzCommon : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,30 +19,53 @@ open class QuizzCommon : AppCompatActivity() {
         var intentValue = intent.getSerializableExtra("LEARNING_TYPE")
         learning = when (intentValue) {
             LearningType.KANJI -> {
-                KanjiLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() })
+                KanjiLearning(
+                    this.resources.openRawResource(
+                        R.raw.kanji_jlpt5
+                    ).bufferedReader().use { it.readText() })
             }
             LearningType.VOCABULARY -> {
-                VocabularyLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() })
+                VocabularyLearning(
+                    this.resources.openRawResource(
+                        R.raw.vocabulary_jlpt5
+                    ).bufferedReader().use { it.readText() })
             }
             LearningType.HIRAGANA -> {
-                HiraganaLearning(this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+                HiraganaLearning(
+                    this.resources.openRawResource(
+                        R.raw.hiragana
+                    ).bufferedReader().use { it.readText() })
             }
             LearningType.KATAKANA -> {
-                HiraganaLearning(this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
+                HiraganaLearning(
+                    this.resources.openRawResource(
+                        R.raw.katakana
+                    ).bufferedReader().use { it.readText() })
             }
             LearningType.SENTENCE -> {
-                SentenceLearning(this.resources.openRawResource(R.raw.sentences).bufferedReader().use { it.readText() },
-                    this.resources.openRawResource(R.raw.particles).bufferedReader().use { it.readText() },
-                    this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+                SentenceLearning(this.resources.openRawResource(
+                    R.raw.sentences
+                ).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.particles)
+                        .bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.hiragana)
+                        .bufferedReader().use { it.readText() })
             }
             LearningType.KANJI_READING -> {
-                KanjiReadingLearning(this.resources.openRawResource(R.raw.kanji_jlpt5).bufferedReader().use { it.readText() },
-                    this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() },
-                    this.resources.openRawResource(R.raw.katakana).bufferedReader().use { it.readText() })
+                KanjiReadingLearning(this.resources.openRawResource(
+                    R.raw.kanji_jlpt5
+                ).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.hiragana)
+                        .bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.katakana)
+                        .bufferedReader().use { it.readText() })
             }
             else -> {
-                VocabularyReadingLearning(this.resources.openRawResource(R.raw.vocabulary_jlpt5).bufferedReader().use { it.readText() },
-                    this.resources.openRawResource(R.raw.hiragana).bufferedReader().use { it.readText() })
+                VocabularyReadingLearning(this.resources.openRawResource(
+                    R.raw.vocabulary_jlpt5
+                ).bufferedReader().use { it.readText() },
+                    this.resources.openRawResource(R.raw.hiragana)
+                        .bufferedReader().use { it.readText() })
             }
         }
         // Since sentences are big the text size

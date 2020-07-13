@@ -1,4 +1,6 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
+
+import com.xwilarg.yousei.quizz.IsCorrect
 
 interface ILearning {
 

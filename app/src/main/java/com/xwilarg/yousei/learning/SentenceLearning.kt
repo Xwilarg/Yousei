@@ -1,8 +1,8 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
-import android.widget.EditText
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.xwilarg.yousei.quizz.IsCorrect
 import kotlin.random.Random
 
 class SentenceLearning : ILearning {
@@ -39,7 +39,10 @@ class SentenceLearning : ILearning {
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
-        return Pair(if (UtilsLearning.convertStringHiragana(myAnswer, hiraganas) == particleAnswer) {
+        return Pair(if (UtilsLearning.convertStringHiragana(
+                myAnswer,
+                hiraganas
+            ) == particleAnswer) {
             IsCorrect.YES
         } else {
             IsCorrect.NO
@@ -64,7 +67,10 @@ class SentenceLearning : ILearning {
     }
 
     override fun getAnswer(answer: String): String {
-        return UtilsLearning.convertStringHiragana(answer, hiraganas)
+        return UtilsLearning.convertStringHiragana(
+            answer,
+            hiraganas
+        )
     }
 
     var sentences: Array<SentenceInfo>

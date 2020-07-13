@@ -1,4 +1,4 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.learning
 
 data class SentenceInfo (
     val words: Array<SentenceWordInfo>,

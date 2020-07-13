@@ -1,8 +1,9 @@
-package com.xwilarg.yousei
+package com.xwilarg.yousei.quizz
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.xwilarg.yousei.R
 
 class QuizzChoicesActivity : QuizzCommon() {
     override fun onCreate(savedInstanceState: Bundle?) {
