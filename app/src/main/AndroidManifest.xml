@@ -7,12 +7,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".quizz.QuizzChoicesActivity"
-            android:parentActivityName=".learning.MainActivity" />
+        <activity android:name=".quizz.QuizzDrawActivity"></activity>
+        <activity
+            android:name=".quizz.QuizzChoicesActivity"
+            android:parentActivityName=".quizz.MainActivity" />
         <activity
             android:name=".quizz.QuizzNormalActivity"
-            android:parentActivityName=".learning.MainActivity" />
-        <activity android:name=".learning.MainActivity">
+            android:parentActivityName=".quizz.MainActivity" />
+        <activity android:name=".quizz.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
