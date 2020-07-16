@@ -14,7 +14,7 @@ class DrawingView : View {
         isFocusable = true;
         isFocusableInTouchMode = true;
         paint = Paint()
-        paint.strokeWidth = 10f
+        paint.strokeWidth = 20f
         paint.color = Color.BLACK
         paint.isAntiAlias = true
         paint.isDither = true
@@ -41,6 +41,11 @@ class DrawingView : View {
         }
         postInvalidate()
         return true
+    }
+
+    fun clear() {
+        path.reset()
+        postInvalidate()
     }
 
     val paint: Paint
