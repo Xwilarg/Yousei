@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineMainSeparator">
 
-        <View
+        <com.xwilarg.yousei.DrawingView
             android:id="@+id/viewDraw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
