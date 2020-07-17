@@ -19,4 +19,8 @@ So that's why I'm making this app, it's my first time using Android Studio (and 
 You can download the current version of the app on the [release page](https://github.com/Xwilarg/Yousei/releases)
 
 ## Others
-[Kanjis files](app/src/main/res/raw) are generated using [JishoParser](https://github.com/Xwilarg/JishoParser), [Jisho](https://jisho.org/) and [EDRDG](https://www.edrdg.org/)
+You're maybe wondering how I'm getting all the information I need about the Japanese language<br/>
+Well to begin with, all the needed information are stored [Kanjis files](here)<br/>
+I'm either getting them from [Jisho](https://jisho.org/) (for the kanji/vocabulary) or from [WWWJDIC](http://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic) for the particle exercices<br/>
+After getting there information, I'm using [JishoParser](https://github.com/Xwilarg/JishoParser) to change them into JSON files<br/>
+To recognize what you draw, I converted all hiragana/katakana using [KanaRecognition](https://github.com/Xwilarg/KanaRecognition)
