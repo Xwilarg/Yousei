@@ -1,10 +1,7 @@
 package com.xwilarg.yousei
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -46,6 +43,13 @@ class DrawingView : View {
     fun clear() {
         path.reset()
         postInvalidate()
+    }
+
+    fun getContent() : Bitmap {
+        var bitmap = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888)
+        var canvas = Canvas(bitmap)
+        this.draw(canvas)
+        return bitmap
     }
 
     val paint: Paint
