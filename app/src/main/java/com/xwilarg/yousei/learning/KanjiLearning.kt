@@ -23,7 +23,8 @@ class KanjiLearning : ILearning {
         var isCorrect = false
         var closestAnswer : String? = null
         if (!myAnswer.isNullOrBlank()) {
-            for (m in currentKanji.meaning) {
+            for (mTmp in currentKanji.meaning) {
+                val m = mTmp.toLowerCase()
                 if (myAnswer == m) {
                     return Pair(IsCorrect.YES, m)
                 }
