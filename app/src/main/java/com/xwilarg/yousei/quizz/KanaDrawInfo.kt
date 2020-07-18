@@ -3,5 +3,6 @@ package com.xwilarg.yousei.quizz
 data class KanaDrawInfo (
     val width: Int,
     val height: Int,
-    val pixels: IntArray
+    val pixels: IntArray,
+    var kana: String
 )
