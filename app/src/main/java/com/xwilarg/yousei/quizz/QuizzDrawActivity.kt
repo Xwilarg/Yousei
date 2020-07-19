@@ -25,20 +25,29 @@ class QuizzDrawActivity : QuizzCommon() {
         btm.getPixels(pixels, 0, btm.width, 0, 0, btm.width, btm.height)
         val tmp = ArrayList<ArrayList<Int>>()
         var i = 0;
+        var hasAnyPixel = false
         // We put all pixels in a 2D array
         var currTmp = ArrayList<Int>()
         for (p in pixels){
-            currTmp.add(if (p == -3487030) {
+            val tmpVal = if (p == -3487030) {
                 0
             } else {
                 1
-            })
+            }
+            if (tmpVal == 1) {
+                hasAnyPixel = true
+            }
+            currTmp.add(tmpVal)
             i++
             if (i == btm.width) {
                 i = 0
                 tmp.add(currTmp)
                 currTmp = ArrayList()
             }
+        }
+
+        if (!hasAnyPixel) {
+            TODO("Manage 'Send' instead of 'Add'")
         }
 
         // Trim the 4 borders
@@ -103,9 +112,12 @@ class QuizzDrawActivity : QuizzCommon() {
             var c = 0
             for (y in myPixels.indices) {
                 for (x in myPixels[0].indices) {
-                    if ((myPixels[y][x] > size && kana.pixels[c] == 1)
-                        || (myPixels[y][x] <= size && kana.pixels[c] == 0))
-                        score++
+                    score += if ((myPixels[y][x] > size && kana.pixels[c] == 1)
+                        || (myPixels[y][x] <= size && kana.pixels[c] == 0)) {
+                        1
+                    } else {
+                        -1
+                    }
                     c++
                 }
             }
