@@ -88,6 +88,8 @@ class QuizzDrawActivity : QuizzCommon() {
             val splitWidth = width / pixels[0].size.toFloat()
             val splitHeigth = height / pixels.size.toFloat()
 
+            var size = ((pixels[0].size.toFloat() / width) * (pixels.size.toFloat() / height)) / 8
+
             // Create a new pixel array that have the same size of the kana we are comparing
             var myPixels = Array(height) { Array(width, init= { 0 }) }
             for (y in pixels.indices) {
@@ -101,13 +103,14 @@ class QuizzDrawActivity : QuizzCommon() {
             var c = 0
             for (y in myPixels.indices) {
                 for (x in myPixels[0].indices) {
-                    if ((myPixels[y][x] > 1f && kana.pixels[c] == 1)
-                        || (myPixels[y][x] <= 1f && kana.pixels[c] == 0))
+                    if ((myPixels[y][x] > size && kana.pixels[c] == 1)
+                        || (myPixels[y][x] <= size && kana.pixels[c] == 0))
                         score++
                     c++
                 }
             }
 
+            println(kana.kana + ": " + score)
             if (score > bestScore)
             {
                 bestScore = score
