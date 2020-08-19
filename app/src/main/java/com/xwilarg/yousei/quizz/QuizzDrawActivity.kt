@@ -13,13 +13,12 @@ class QuizzDrawActivity : QuizzCommon() {
     }
 
     fun answer(view: View) {
-        val btm = findViewById<DrawingView>(R.id.viewDraw).getContent()
+        findViewById<DrawingView>(R.id.viewDraw).getContent({
+            msg -> checkAnswer(msg)
+        })
     }
 
     fun clear(view: View) {
         findViewById<DrawingView>(R.id.viewDraw).clear()
     }
-
-    lateinit var hiraganaDrawInfo: Array<KanaDrawInfo>
-    lateinit var katakanaDrawInfo: Array<KanaDrawInfo>
 }
