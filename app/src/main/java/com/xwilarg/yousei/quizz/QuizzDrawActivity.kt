@@ -1,5 +1,7 @@
 package com.xwilarg.yousei.quizz
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import com.xwilarg.yousei.DrawingView
@@ -14,7 +16,12 @@ class QuizzDrawActivity : QuizzCommon() {
 
     fun answer(view: View) {
         findViewById<DrawingView>(R.id.viewDraw).getContent {
-            msg -> checkAnswer(msg)
+            msg -> if (msg == null) {
+                checkAnswer("")
+            } else {
+                checkAnswer(msg)
+            }
+            findViewById<DrawingView>(R.id.viewDraw).clear()
         }
     }
 

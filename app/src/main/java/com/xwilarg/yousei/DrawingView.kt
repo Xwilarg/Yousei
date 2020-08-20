@@ -1,6 +1,8 @@
 package com.xwilarg.yousei
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
@@ -41,7 +43,7 @@ class DrawingView : View {
             }
             MotionEvent.ACTION_MOVE -> {
                 path.lineTo(x, y)
-                strokeBuilder!!.addPoint(Ink.Point.create(x, y, t))
+                strokeBuilder.addPoint(Ink.Point.create(x, y, t))
             }
             MotionEvent.ACTION_UP -> {
                 strokeBuilder.addPoint(Ink.Point.create(x, y, t))
@@ -59,37 +61,48 @@ class DrawingView : View {
         postInvalidate()
     }
 
-    fun getContent(callback: (String) -> Unit) {
-        var modelIdentifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag("ja")
-        var model: DigitalInkRecognitionModel =
-            DigitalInkRecognitionModel.builder(modelIdentifier!!).build()
-        remoteModelManager.isModelDownloaded(model).addOnSuccessListener { res: Boolean ->
-            if (res) {
-                getContentInternal(model, callback)
-            } else {
-                remoteModelManager.download(model, DownloadConditions.Builder().build())
-                    .addOnSuccessListener {
-                        getContentInternal(model, callback)
-                    }
-                    .addOnFailureListener { e: Exception ->
-                        callback(e.message!!)
-                    }
+    fun getContent(callback: (List<String>?) -> Unit) {
+        if (path.isEmpty) {
+            callback(null)
+        } else {
+            var modelIdentifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag("ja")
+            var model: DigitalInkRecognitionModel =
+                DigitalInkRecognitionModel.builder(modelIdentifier!!).build()
+            remoteModelManager.isModelDownloaded(model).addOnSuccessListener { res: Boolean ->
+                if (res) {
+                    getContentInternal(model, callback)
+                } else {
+                    remoteModelManager.download(model, DownloadConditions.Builder().build())
+                        .addOnSuccessListener {
+                            getContentInternal(model, callback)
+                        }
+                        .addOnFailureListener { e: Exception ->
+                            AlertDialog.Builder(context).setMessage("An error occurred while processing the request: " + e.message!!).setPositiveButton("OK") { dial: DialogInterface, _: Int -> dial.dismiss()}.create().show()
+                            callback(null)
+                        }
+                }
+            } .addOnFailureListener { e: Exception ->
+                AlertDialog.Builder(context).setMessage("An error occurred while processing the request: " + e.message!!).setPositiveButton("OK") { dial: DialogInterface, _: Int -> dial.dismiss()}.create().show()
+                callback(null)
             }
-        } .addOnFailureListener { e: Exception ->
-            callback(e.message!!)
         }
-
     }
 
-    fun getContentInternal(model : DigitalInkRecognitionModel, callback: (String) -> Unit) {
+    private fun getContentInternal(model : DigitalInkRecognitionModel, callback: (List<String>?) -> Unit) {
         var recognizer = DigitalInkRecognition.getClient(DigitalInkRecognizerOptions.builder(model).build())
         val ink = inkBuilder.build()
         recognizer.recognize(ink)
             .addOnSuccessListener { result: RecognitionResult ->
-                callback(result.candidates[0].text)
+                if (BuildConfig.DEBUG) {
+                    for (res in result.candidates) {
+                        Log.d("res", res.text)
+                    }
+                }
+                callback(result.candidates.map { it.text })
             }
             .addOnFailureListener { e: Exception ->
-                callback(e.message!!)
+                AlertDialog.Builder(context).setMessage("An error occurred while processing the request: " + e.message!!).setPositiveButton("OK") { dial: DialogInterface, _: Int -> dial.dismiss()}.create().show()
+                callback(null)
             }
     }
 

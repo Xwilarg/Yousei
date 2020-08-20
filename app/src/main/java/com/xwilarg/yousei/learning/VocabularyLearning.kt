@@ -16,7 +16,6 @@ class VocabularyLearning : ILearning {
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
-        var isCorrect = false
         var closestAnswer : String? = null
         if (!myAnswer.isNullOrBlank()) {
             for (mTmp in currentWord   .meaning) {

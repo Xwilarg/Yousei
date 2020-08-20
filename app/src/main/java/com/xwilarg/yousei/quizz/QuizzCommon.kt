@@ -75,15 +75,34 @@ open class QuizzCommon : AppCompatActivity() {
         }
         loadQuestion()
     }
+
+    open fun checkAnswer(myAnswer: List<String>) {
+        var corr: IsCorrect? = null
+        for(a in myAnswer) {
+            var answer = learning.checkAnswer(a)
+            if (corr == null || answer.first > corr)
+            {
+                if (answer.first == IsCorrect.YES) {
+                    checkAnswerInternal(a, answer)
+                    return
+                }
+                corr = answer.first
+            }
+        }
+        checkAnswerInternal(myAnswer[0], learning.checkAnswer(myAnswer[0]))
+    }
+
     open fun checkAnswer(myAnswer: String) {
+        checkAnswerInternal(myAnswer, learning.checkAnswer(myAnswer))
+    }
+
+    fun checkAnswerInternal(myAnswer: String, answer: Pair<IsCorrect, String>) {
         // Display your answer and the correct one
         findViewById<TextView>(R.id.textLastKanji).text = learning.getCurrent()
         findViewById<TextView>(R.id.textAnswerYouTitle).text = "Your answer"
         findViewById<TextView>(R.id.textAnswerHimTitle).text = "Right answer"
 
-        // These 2 lines must be called in this order because of KanjiReadingLearning initialising some stuffs in checkAnswer for getAnswer
-        val answer = learning.checkAnswer(myAnswer)
-        findViewById<TextView>(R.id.textAnswerYou).text = myAnswer// learning.getAnswer(myAnswer)
+        findViewById<TextView>(R.id.textAnswerYou).text = learning.getAnswer(myAnswer)
 
         // If the answer is right, display green
         // If it's wrong, red

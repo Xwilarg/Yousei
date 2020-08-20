@@ -45,27 +45,20 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineMainSeparator">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineLeft"
+            android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="100dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="100dp" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="200dp" />
 
         <com.xwilarg.yousei.DrawingView
             android:id="@+id/viewDraw"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#CACACA"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -75,7 +68,8 @@
             android:onClick="clear"
             android:text="Clear"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
         <Button
             android:id="@+id/buttonAnswer"
@@ -84,7 +78,8 @@
             android:onClick="answer"
             android:text="Send"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

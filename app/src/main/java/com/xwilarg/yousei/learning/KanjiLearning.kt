@@ -13,14 +13,13 @@ class KanjiLearning : ILearning {
     override fun getQuestion() : Pair<String, String> {
         currentKanji = kanjis[Random.nextInt(0, kanjis.size)]
         return Pair(currentKanji.kanji, if (currentKanji.kunyomi.isEmpty()) {
-            currentKanji.onyomi?.get(0)
+            currentKanji.onyomi.get(0)
         } else {
-            currentKanji.kunyomi?.get(0)
+            currentKanji.kunyomi.get(0)
         })
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
-        var isCorrect = false
         var closestAnswer : String? = null
         if (!myAnswer.isNullOrBlank()) {
             for (mTmp in currentKanji.meaning) {
