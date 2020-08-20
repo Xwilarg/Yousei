@@ -83,7 +83,7 @@ open class QuizzCommon : AppCompatActivity() {
 
         // These 2 lines must be called in this order because of KanjiReadingLearning initialising some stuffs in checkAnswer for getAnswer
         val answer = learning.checkAnswer(myAnswer)
-        findViewById<TextView>(R.id.textAnswerYou).text = learning.getAnswer(myAnswer)
+        findViewById<TextView>(R.id.textAnswerYou).text = myAnswer// learning.getAnswer(myAnswer)
 
         // If the answer is right, display green
         // If it's wrong, red

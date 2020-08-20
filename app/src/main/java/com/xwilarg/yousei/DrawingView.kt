@@ -55,6 +55,7 @@ class DrawingView : View {
 
     fun clear() {
         path.reset()
+        inkBuilder = Ink.builder()
         postInvalidate()
     }
 
@@ -62,22 +63,27 @@ class DrawingView : View {
         var modelIdentifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag("ja")
         var model: DigitalInkRecognitionModel =
             DigitalInkRecognitionModel.builder(modelIdentifier!!).build()
-        remoteModelManager.isModelDownloaded(model).addOnSuccessListener {
-            getContentInternal(model, callback)
-        } .addOnFailureListener {
-            remoteModelManager.download(model, DownloadConditions.Builder().build())
-                .addOnSuccessListener {
-                    getContentInternal(model, callback)
-                }
-                .addOnFailureListener { e: Exception ->
-                    callback(e.message!!)
-                }
+        remoteModelManager.isModelDownloaded(model).addOnSuccessListener { res: Boolean ->
+            if (res) {
+                getContentInternal(model, callback)
+            } else {
+                remoteModelManager.download(model, DownloadConditions.Builder().build())
+                    .addOnSuccessListener {
+                        getContentInternal(model, callback)
+                    }
+                    .addOnFailureListener { e: Exception ->
+                        callback(e.message!!)
+                    }
+            }
+        } .addOnFailureListener { e: Exception ->
+            callback(e.message!!)
         }
 
     }
 
     fun getContentInternal(model : DigitalInkRecognitionModel, callback: (String) -> Unit) {
         var recognizer = DigitalInkRecognition.getClient(DigitalInkRecognizerOptions.builder(model).build())
+        val ink = inkBuilder.build()
         recognizer.recognize(ink)
             .addOnSuccessListener { result: RecognitionResult ->
                 callback(result.candidates[0].text)
@@ -91,6 +97,5 @@ class DrawingView : View {
     var path: Path
     var inkBuilder = Ink.builder()
     lateinit var strokeBuilder: Ink.Stroke.Builder
-    val ink = inkBuilder.build()
     val remoteModelManager = RemoteModelManager.getInstance()
 }

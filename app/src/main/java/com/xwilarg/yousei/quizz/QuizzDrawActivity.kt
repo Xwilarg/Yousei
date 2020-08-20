@@ -13,9 +13,9 @@ class QuizzDrawActivity : QuizzCommon() {
     }
 
     fun answer(view: View) {
-        findViewById<DrawingView>(R.id.viewDraw).getContent({
+        findViewById<DrawingView>(R.id.viewDraw).getContent {
             msg -> checkAnswer(msg)
-        })
+        }
     }
 
     fun clear(view: View) {
