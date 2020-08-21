@@ -17,17 +17,18 @@ open class QuizzCommon : AppCompatActivity() {
     fun preload() {
         // Load the right file in the right learning class given the intent from the main menu
         var intentValue = intent.getSerializableExtra("LEARNING_TYPE")
+        var jlptValue = intent.getSerializableExtra("JLPT") as Int
         learning = when (intentValue) {
             LearningType.KANJI -> {
                 KanjiLearning(
                     this.resources.openRawResource(
-                        R.raw.kanji_jlpt5
+                        getKanjiJlpt(jlptValue)
                     ).bufferedReader().use { it.readText() })
             }
             LearningType.VOCABULARY -> {
                 VocabularyLearning(
                     this.resources.openRawResource(
-                        R.raw.vocabulary_jlpt5
+                        getVocabularyJlpt(jlptValue)
                     ).bufferedReader().use { it.readText() })
             }
             LearningType.HIRAGANA -> {
@@ -53,7 +54,7 @@ open class QuizzCommon : AppCompatActivity() {
             }
             LearningType.KANJI_READING -> {
                 KanjiReadingLearning(this.resources.openRawResource(
-                    R.raw.kanji_jlpt5
+                    getKanjiJlpt(jlptValue)
                 ).bufferedReader().use { it.readText() },
                     this.resources.openRawResource(R.raw.hiragana)
                         .bufferedReader().use { it.readText() },
@@ -62,7 +63,7 @@ open class QuizzCommon : AppCompatActivity() {
             }
             else -> {
                 VocabularyReadingLearning(this.resources.openRawResource(
-                    R.raw.vocabulary_jlpt5
+                    getVocabularyJlpt(jlptValue)
                 ).bufferedReader().use { it.readText() },
                     this.resources.openRawResource(R.raw.hiragana)
                         .bufferedReader().use { it.readText() })
@@ -74,6 +75,28 @@ open class QuizzCommon : AppCompatActivity() {
             findViewById<TextView>(R.id.textQuizzHelp).textSize = 20f
         }
         loadQuestion()
+    }
+
+    fun getKanjiJlpt(value: Int) : Int {
+        return when {
+            value == 1 -> R.raw.kanji_jlpt1
+            value == 2 -> R.raw.kanji_jlpt2
+            value == 3 -> R.raw.kanji_jlpt3
+            value == 4 -> R.raw.kanji_jlpt4
+            value == 5 -> R.raw.kanji_jlpt5
+            else -> throw Exception("Invalid value $value")
+        }
+    }
+
+    fun getVocabularyJlpt(value: Int) : Int {
+        return when {
+            value == 1 -> R.raw.vocabulary_jlpt1
+            value == 2 -> R.raw.vocabulary_jlpt2
+            value == 3 -> R.raw.vocabulary_jlpt3
+            value == 4 -> R.raw.vocabulary_jlpt4
+            value == 5 -> R.raw.vocabulary_jlpt5
+            else -> throw Exception("Invalid value $value")
+        }
     }
 
     open fun checkAnswer(myAnswer: List<String>) {
