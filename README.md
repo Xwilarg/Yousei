@@ -1,8 +1,8 @@
 # Yousei
 An android app to help learning Japanese
 
-<img src="preview/01.jpg" width="250" alt="Preview 01"/> <img src="preview/02.jpg" width="250" alt="Preview 02"/><br/>
-<sup>Preview images are from the version 1.1.0-alpha</sup>
+<img src="preview/01.jpg" width="250" alt="Preview 01"/> <img src="preview/02.jpg" width="250" alt="Preview 02"/> <img src="preview/03.jpg" width="250" alt="Preview 03"/><br/>
+<sup>Preview images may not be from the latest version of the app</sup>
 
 ## Phylosophy
 Yet another application to learn Japanese... But why?<br/>
@@ -23,4 +23,4 @@ You're maybe wondering how I'm getting all the information I need about the Japa
 Well to begin with, all the needed information are stored [here](app/src/main/res/raw)<br/>
 I'm either getting them from [Jisho](https://jisho.org/) (for the kanji/vocabulary) or from [WWWJDIC](http://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic) for the particle exercices<br/>
 After getting there information, I'm using [JishoParser](https://github.com/Xwilarg/JishoParser) to change them into JSON files<br/>
-To recognize what you draw, I converted all hiragana/katakana using [KanaRecognition](https://github.com/Xwilarg/KanaRecognition)
+To recognize what you draw, I'm using [Google ML Kit](https://developers.google.com/ml-kit/vision/digital-ink-recognition/)
