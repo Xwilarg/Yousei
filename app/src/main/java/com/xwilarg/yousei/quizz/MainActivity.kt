@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<EditText>(R.id.jlptValue).addTextChangedListener { text: Editable? -> run {
                 if (text != null && text.isNotEmpty()) {
-                    var value = text.toString().toIntOrNull()
-                    if (value == null || value < 1 || value > 5)
+                    val value = text.toString().toInt()
+                    if (value < 1 || value > 5)
                         findViewById<EditText>(R.id.jlptValue).setText(jlptValue.toString())
                     else
                         jlptValue = value
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onRadioGroupClick(view: View) {
-        var isDraw = findViewById<RadioButton>(R.id.radioDraw).isChecked
+        val isDraw = findViewById<RadioButton>(R.id.radioDraw).isChecked
         findViewById<Button>(R.id.buttonQuizzHiragana).isEnabled = !isDraw
         findViewById<Button>(R.id.buttonQuizzKatakana).isEnabled = !isDraw
         findViewById<Button>(R.id.buttonQuizzKanji).isEnabled = !isDraw
@@ -37,55 +37,55 @@ class MainActivity : AppCompatActivity() {
     }
     
     fun startGameHiragana(view: View) {
-        var intent = Intent(this, getQuizzType())
+        val intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.HIRAGANA)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameKatakana(view: View) {
-        var intent = Intent(this, getQuizzType())
+        val intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.KATAKANA)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameKanji(view: View) {
-        var intent = Intent(this, getQuizzType())
+        val intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.KANJI)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameKanjiReading(view: View) {
-        var intent = Intent(this, getQuizzType())
+        val intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.KANJI_READING)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameVocabulary(view: View) {
-        var intent = Intent(this, getQuizzType())
+        val intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameVocabularyReading(view: View) {
-        var intent = Intent(this, getQuizzType())
+        val intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY_READING)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameSentence(view: View) {
-        var intent = Intent(this, getQuizzType())
+        val intent = Intent(this, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.SENTENCE)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
-    fun getQuizzType() : Class<*> {
+    private fun getQuizzType() : Class<*> {
         return when {
             findViewById<RadioButton>(R.id.radioChoices).isChecked -> {
                 QuizzChoicesActivity::class.java
