@@ -68,10 +68,15 @@ open class QuizzCommon : AppCompatActivity() {
                     this.resources.openRawResource(R.raw.hiragana)
                         .bufferedReader().use { it.readText() })
             }
-            else -> {
+            LearningType.KANJI_CONVERT -> {
                 LearningKanjiConvert(this.resources.openRawResource(
-                        getVocabularyJlpt(jlptValue)
-                    ).bufferedReader().use { it.readText() })
+                    getKanjiJlpt(jlptValue)
+                ).bufferedReader().use { it.readText() })
+            }
+            else -> {
+                LearningVocabularyConvert(this.resources.openRawResource(
+                    getVocabularyJlpt(jlptValue)
+                ).bufferedReader().use { it.readText() })
             }
         }
         // Since sentences are big the text size

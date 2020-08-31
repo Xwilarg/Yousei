@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonQuizzKatakana).isEnabled = !isDraw
         findViewById<Button>(R.id.buttonQuizzKanji).isEnabled = !isDraw
         findViewById<Button>(R.id.buttonQuizzVocabulary).isEnabled = !isDraw
+        val isInput = findViewById<RadioButton>(R.id.radioFreeText).isChecked
+        findViewById<Button>(R.id.buttonQuizzKanjiConvert).isEnabled = !isInput
+        findViewById<Button>(R.id.buttonQuizzVocabularyConvert).isEnabled = !isInput
     }
     
     fun startGameHiragana(view: View) {

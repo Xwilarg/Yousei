@@ -13,9 +13,9 @@ class LearningKanjiTranslate : ILearning {
     override fun getQuestion() : Pair<String, String> {
         currentKanji = kanjis[Random.nextInt(0, kanjis.size)]
         return Pair(currentKanji.kanji, if (currentKanji.kunyomi.isEmpty()) {
-            currentKanji.onyomi.get(0)
+            currentKanji.onyomi[0]
         } else {
-            currentKanji.kunyomi.get(0)
+            currentKanji.kunyomi[0]
         })
     }
 
