@@ -166,9 +166,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startGameKanji"
-        android:text="Kanji"
+        android:text="Translate"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+    <Button
+        android:id="@+id/buttonQuizzKanjiConvert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startGameKanjiConvert"
+        android:text="Convert"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -177,7 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startGameKanjiReading"
-        android:text="Kanji\nReading"
+        android:text="Read"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
@@ -188,9 +199,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startGameVocabulary"
-        android:text="Vocabulary"
+        android:text="Translate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+    <Button
+        android:id="@+id/buttonQuizzVocabularyConvert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="startGameVocabularyConvert"
+        android:text="Translate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
@@ -199,7 +221,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startGameVocabularyReading"
-        android:text="Vocabulary\nReading"
+        android:text="Read"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"

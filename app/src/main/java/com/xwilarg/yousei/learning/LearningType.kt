@@ -3,9 +3,11 @@ package com.xwilarg.yousei.learning
 enum class LearningType {
     HIRAGANA,
     KATAKANA,
-    KANJI,
-    KANJI_READING,
-    VOCABULARY,
-    VOCABULARY_READING,
+    KANJI_TRANSLATE,
+    KANJI_READ,
+    KANJI_CONVERT,
+    VOCABULARY_TRANSLATE,
+    VOCABULARY_READ,
+    VOCABULARY_CONVERT,
     SENTENCE
 }

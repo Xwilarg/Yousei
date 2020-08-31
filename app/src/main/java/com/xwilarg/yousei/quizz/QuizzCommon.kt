@@ -19,26 +19,26 @@ open class QuizzCommon : AppCompatActivity() {
         var intentValue = intent.getSerializableExtra("LEARNING_TYPE")
         var jlptValue = intent.getSerializableExtra("JLPT") as Int
         learning = when (intentValue) {
-            LearningType.KANJI -> {
-                KanjiLearning(
+            LearningType.KANJI_TRANSLATE -> {
+                LearningKanjiTranslate(
                     this.resources.openRawResource(
                         getKanjiJlpt(jlptValue)
                     ).bufferedReader().use { it.readText() })
             }
-            LearningType.VOCABULARY -> {
-                VocabularyLearning(
+            LearningType.VOCABULARY_TRANSLATE -> {
+                LearningVocabularyTranslate(
                     this.resources.openRawResource(
                         getVocabularyJlpt(jlptValue)
                     ).bufferedReader().use { it.readText() })
             }
             LearningType.HIRAGANA -> {
-                HiraganaLearning(
+                LearningHiragana(
                     this.resources.openRawResource(
                         R.raw.hiragana
                     ).bufferedReader().use { it.readText() })
             }
             LearningType.KATAKANA -> {
-                HiraganaLearning(
+                LearningHiragana(
                     this.resources.openRawResource(
                         R.raw.katakana
                     ).bufferedReader().use { it.readText() })
@@ -52,8 +52,8 @@ open class QuizzCommon : AppCompatActivity() {
                     this.resources.openRawResource(R.raw.hiragana)
                         .bufferedReader().use { it.readText() })
             }
-            LearningType.KANJI_READING -> {
-                KanjiReadingLearning(this.resources.openRawResource(
+            LearningType.KANJI_READ -> {
+                LearningKanjiRead(this.resources.openRawResource(
                     getKanjiJlpt(jlptValue)
                 ).bufferedReader().use { it.readText() },
                     this.resources.openRawResource(R.raw.hiragana)
@@ -61,12 +61,17 @@ open class QuizzCommon : AppCompatActivity() {
                     this.resources.openRawResource(R.raw.katakana)
                         .bufferedReader().use { it.readText() })
             }
-            else -> {
-                VocabularyReadingLearning(this.resources.openRawResource(
+            LearningType.VOCABULARY_READ -> {
+                LearningVocabularyRead(this.resources.openRawResource(
                     getVocabularyJlpt(jlptValue)
                 ).bufferedReader().use { it.readText() },
                     this.resources.openRawResource(R.raw.hiragana)
                         .bufferedReader().use { it.readText() })
+            }
+            else -> {
+                LearningKanjiConvert(this.resources.openRawResource(
+                        getVocabularyJlpt(jlptValue)
+                    ).bufferedReader().use { it.readText() })
             }
         }
         // Since sentences are big the text size

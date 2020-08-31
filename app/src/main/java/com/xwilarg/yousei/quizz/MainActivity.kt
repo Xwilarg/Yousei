@@ -52,28 +52,42 @@ class MainActivity : AppCompatActivity() {
 
     fun startGameKanji(view: View) {
         val intent = Intent(this, getQuizzType())
-        intent.putExtra("LEARNING_TYPE", LearningType.KANJI)
+        intent.putExtra("LEARNING_TYPE", LearningType.KANJI_TRANSLATE)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameKanjiReading(view: View) {
         val intent = Intent(this, getQuizzType())
-        intent.putExtra("LEARNING_TYPE", LearningType.KANJI_READING)
+        intent.putExtra("LEARNING_TYPE", LearningType.KANJI_READ)
+        intent.putExtra("JLPT", jlptValue)
+        startActivity(intent)
+    }
+
+    fun startGameKanjiConvert(view: View) {
+        val intent = Intent(this, getQuizzType())
+        intent.putExtra("LEARNING_TYPE", LearningType.KANJI_CONVERT)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameVocabulary(view: View) {
         val intent = Intent(this, getQuizzType())
-        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY)
+        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY_TRANSLATE)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }
 
     fun startGameVocabularyReading(view: View) {
         val intent = Intent(this, getQuizzType())
-        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY_READING)
+        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY_READ)
+        intent.putExtra("JLPT", jlptValue)
+        startActivity(intent)
+    }
+
+    fun startGameVocabularyConvert(view: View) {
+        val intent = Intent(this, getQuizzType())
+        intent.putExtra("LEARNING_TYPE", LearningType.VOCABULARY_CONVERT)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }

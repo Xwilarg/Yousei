@@ -5,7 +5,7 @@ import kotlin.random.Random
 import com.google.gson.reflect.TypeToken
 import com.xwilarg.yousei.quizz.IsCorrect
 
-class HiraganaLearning : ILearning {
+class LearningHiragana : ILearning {
 
     constructor(content: String) {
         hiraganas = Gson().fromJson(content, object : TypeToken<Map<String, String>>() {}.type)

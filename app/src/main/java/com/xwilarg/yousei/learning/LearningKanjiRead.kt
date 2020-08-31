@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken
 import com.xwilarg.yousei.quizz.IsCorrect
 import kotlin.random.Random
 
-class KanjiReadingLearning : ILearning {
+class LearningKanjiRead : ILearning {
 
     constructor(content: String, contentHiraganas: String, contentKatakanas: String) {
         kanjis = Gson().fromJson(content, Array<KanjiInfo>::class.java)

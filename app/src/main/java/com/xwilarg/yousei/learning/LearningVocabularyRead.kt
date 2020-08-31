@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken
 import com.xwilarg.yousei.quizz.IsCorrect
 import kotlin.random.Random
 
-class VocabularyReadingLearning : ILearning {
+class LearningVocabularyRead : ILearning {
 
     constructor(content: String, contentHiraganas: String) {
         words = Gson().fromJson(content, Array<VocabularyInfo>::class.java)
