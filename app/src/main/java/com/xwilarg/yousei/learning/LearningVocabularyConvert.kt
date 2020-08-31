@@ -18,6 +18,8 @@ class LearningVocabularyConvert : ILearning {
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
         return if (myAnswer == currentWord.word) {
             return Pair(IsCorrect.YES, currentWord.word)
+        } else if (currentWord.word.contains(myAnswer)) {
+            return Pair(IsCorrect.PARTIAL, currentWord.word)
         } else {
             return Pair(IsCorrect.NO, currentWord.word)
         }
