@@ -22,6 +22,8 @@ class LearningKanjiConvert : ILearning {
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
         return if (myAnswer == currentKanji.kanji) {
             return Pair(IsCorrect.YES, currentKanji.kanji)
+        } else if (myAnswer == currentKanji.kanji[0].toString()) {
+            return Pair(IsCorrect.YES, currentKanji.kanji[0].toString())
         } else {
             return Pair(IsCorrect.NO, currentKanji.kanji)
         }
