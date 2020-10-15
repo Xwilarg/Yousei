@@ -109,14 +109,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:onClick="onRadioGroupClick"
             android:text="Choices" />
 
         <RadioButton
             android:id="@+id/radioFreeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioGroupClick"
             android:text="Free Text" />
 
         <RadioButton
@@ -124,7 +122,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRadioGroupClick"
             android:text="Draw" />
     </RadioGroup>
 
@@ -143,7 +140,6 @@
         android:id="@+id/buttonQuizzHiragana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameHiragana"
         android:text="Hiragana"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
@@ -154,7 +150,6 @@
         android:id="@+id/buttonQuizzKatakana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameKatakana"
         android:text="Katakana"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +160,6 @@
         android:id="@+id/buttonQuizzKanji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameKanji"
         android:text="Translate"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
@@ -176,7 +170,6 @@
         android:id="@+id/buttonQuizzKanjiConvert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameKanjiConvert"
         android:text="Convert"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -187,7 +180,6 @@
         android:id="@+id/buttonQuizzKanjiReading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameKanjiReading"
         android:text="Read"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -198,7 +190,6 @@
         android:id="@+id/buttonQuizzVocabulary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameVocabulary"
         android:text="Translate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
@@ -209,7 +200,6 @@
         android:id="@+id/buttonQuizzVocabularyConvert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameVocabularyConvert"
         android:text="Convert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -220,7 +210,6 @@
         android:id="@+id/buttonQuizzVocabularyReading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameVocabularyReading"
         android:text="Read"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -231,7 +220,6 @@
         android:id="@+id/buttonQuizzParticles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="startGameSentence"
         android:text="Particles"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
         app:layout_constraintEnd_toEndOf="parent"

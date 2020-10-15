@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import com.google.mlkit.vision.digitalink.*
-import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.common.model.RemoteModelManager
 
 class DrawingView : View {
@@ -68,23 +67,7 @@ class DrawingView : View {
             var modelIdentifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag("ja")
             var model: DigitalInkRecognitionModel =
                 DigitalInkRecognitionModel.builder(modelIdentifier!!).build()
-            remoteModelManager.isModelDownloaded(model).addOnSuccessListener { res: Boolean ->
-                if (res) {
-                    getContentInternal(model, callback)
-                } else {
-                    remoteModelManager.download(model, DownloadConditions.Builder().build())
-                        .addOnSuccessListener {
-                            getContentInternal(model, callback)
-                        }
-                        .addOnFailureListener { e: Exception ->
-                            AlertDialog.Builder(context).setMessage("An error occurred while processing the request: " + e.message!!).setPositiveButton("OK") { dial: DialogInterface, _: Int -> dial.dismiss()}.create().show()
-                            callback(null)
-                        }
-                }
-            } .addOnFailureListener { e: Exception ->
-                AlertDialog.Builder(context).setMessage("An error occurred while processing the request: " + e.message!!).setPositiveButton("OK") { dial: DialogInterface, _: Int -> dial.dismiss()}.create().show()
-                callback(null)
-            }
+            getContentInternal(model, callback)
         }
     }
 

@@ -16,6 +16,7 @@ import com.xwilarg.yousei.learning.LearningType
 import com.xwilarg.yousei.quizz.QuizzChoicesActivity
 import com.xwilarg.yousei.quizz.QuizzDrawActivity
 import com.xwilarg.yousei.quizz.QuizzNormalActivity
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
 class HomeFragment : Fragment() {
@@ -38,6 +39,55 @@ class HomeFragment : Fragment() {
                     jlptValue = value
             }
         }}
+
+        (v.radioChoices as Button).setOnClickListener {
+            onRadioGroupClick(it)
+        }
+
+        (v.radioFreeText as Button).setOnClickListener {
+            onRadioGroupClick(it)
+        }
+
+        (v.radioDraw as Button).setOnClickListener {
+            onRadioGroupClick(it)
+        }
+
+        (v.buttonQuizzHiragana as Button).setOnClickListener {
+            startGameHiragana(it)
+        }
+
+        (v.buttonQuizzKatakana as Button).setOnClickListener {
+            startGameKatakana(it)
+        }
+
+        (v.buttonQuizzKanji as Button).setOnClickListener {
+            startGameKanji(it)
+        }
+
+        (v.buttonQuizzKanjiConvert as Button).setOnClickListener {
+            startGameKanjiConvert(it)
+        }
+
+        (v.buttonQuizzKanjiReading as Button).setOnClickListener {
+            startGameKanjiReading(it)
+        }
+
+        (v.buttonQuizzVocabulary as Button).setOnClickListener {
+            startGameVocabulary(it)
+        }
+
+        (v.buttonQuizzVocabularyConvert as Button).setOnClickListener {
+            startGameVocabularyConvert(it)
+        }
+
+        (v.buttonQuizzVocabularyReading as Button).setOnClickListener {
+            startGameVocabularyReading(it)
+        }
+
+        (v.buttonQuizzParticles as Button).setOnClickListener {
+            startGameSentence(it)
+        }
+
         return v
     }
 

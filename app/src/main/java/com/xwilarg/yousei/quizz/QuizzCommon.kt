@@ -1,20 +1,63 @@
 package com.xwilarg.yousei.quizz;
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
-import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.xwilarg.yousei.*
+import com.google.mlkit.common.model.DownloadConditions
+import com.google.mlkit.common.model.RemoteModelManager
+import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModel
+import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModelIdentifier
+import com.xwilarg.yousei.R
 import com.xwilarg.yousei.learning.*
+import com.xwilarg.yousei.ui.home.HomeFragment
 
 open class QuizzCommon : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quizz_choices)
+
+    fun preloadWithDownload(context: Context) { // Download OCR data from draw quizz
+        var modelIdentifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag("ja")
+        var model: DigitalInkRecognitionModel =
+            DigitalInkRecognitionModel.builder(modelIdentifier!!).build()
+        val remoteModelManager = RemoteModelManager.getInstance()
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Updating OCR data, please wait...")
+        val popup = builder.create()
+        popup.show()
+        remoteModelManager.isModelDownloaded(model).addOnSuccessListener { res: Boolean ->
+            if (res) {
+                popup.dismiss()
+                preload()
+            } else {
+                remoteModelManager.download(model, DownloadConditions.Builder().build())
+                    .addOnSuccessListener {
+                        popup.dismiss()
+                        preload()
+                    }
+                    .addOnFailureListener { e: Exception ->
+                        popup.dismiss()
+                        builder.setMessage("An error occurred while downloading OCR data: " + e.message!!)
+                        builder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
+                            startActivity(Intent(this, HomeFragment::class.java))
+                        }
+                        builder.create().show()
+                    }
+            }
+        }.addOnFailureListener { e: Exception ->
+            popup.hide()
+            builder.setMessage("An error occurred while checking OCR data: " + e.message!!)
+            builder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
+                startActivity(Intent(this, HomeFragment::class.java))
+            }
+            builder.create().show()
+        }
     }
 
-    fun preload() {
+    fun preload()
+    {
         // Load the right file in the right learning class given the intent from the main menu
         var intentValue = intent.getSerializableExtra("LEARNING_TYPE")
         var jlptValue = intent.getSerializableExtra("JLPT") as Int
