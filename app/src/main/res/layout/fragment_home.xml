@@ -28,6 +28,13 @@
         app:layout_constraintGuide_percent=".875" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTitle3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".625" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +68,7 @@
         android:layout_height="wrap_content"
         android:text="Game Mode"
         android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle1"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +80,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/jlptLabel"
@@ -102,7 +109,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/radioChoices"
@@ -134,57 +141,57 @@
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
         android:id="@+id/buttonQuizzHiragana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hiragana"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTitle2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
         android:id="@+id/buttonQuizzKatakana"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Katakana"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTitle2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
         android:id="@+id/buttonQuizzKanji"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Translate"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle3"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
     <Button
         android:id="@+id/buttonQuizzKanjiConvert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Convert"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
     <Button
         android:id="@+id/buttonQuizzKanjiReading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Read"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
     <Button
         android:id="@+id/buttonQuizzVocabulary"
@@ -222,7 +229,7 @@
         android:layout_height="wrap_content"
         android:text="Particles"
         app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintVertical_bias="0.492" />
@@ -233,10 +240,10 @@
         android:layout_height="wrap_content"
         android:text="Kanji"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle2"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
         android:id="@+id/textView2"
@@ -253,10 +260,21 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Others"
+        android:text="Kana"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitle1" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grammar"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitle3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
