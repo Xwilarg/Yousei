@@ -20,13 +20,20 @@ class LearningKanjiConvert : ILearning {
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
-        return if (myAnswer == currentKanji.kanji) {
+        if (myAnswer == currentKanji.kanji) {
             return Pair(IsCorrect.YES, currentKanji.kanji)
-        } else if (myAnswer == currentKanji.kanji[0].toString()) {
-            return Pair(IsCorrect.YES, currentKanji.kanji[0].toString())
-        } else {
-            return Pair(IsCorrect.NO, currentKanji.kanji)
         }
+        var m = myAnswer;
+        if (m.contains(".")) {
+            if (currentKanji.kanji == m.replace(".", "")) {
+                return Pair(IsCorrect.YES, m)
+            }
+            m = m.split(".")[0]
+        }
+        if (m == currentKanji.kanji[0].toString()) {
+            return Pair(IsCorrect.YES, currentKanji.kanji[0].toString())
+        }
+        return Pair(IsCorrect.NO, currentKanji.kanji)
     }
 
     override fun getCurrent(): String {
