@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">Yousei</string>
-    <string name="title_activity_main">MainActivity</string>
+
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
     <string name="title_settings">Settings</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="cache_header">Cache</string>
+    <string name="about_header">About</string>
+
+    <!-- Cache Preferences -->
+    <string name="ocr_title">Delete OCR cache</string>
+
+    <!-- About Preferences -->
+    <string name="about_title">About Yousei</string>
+    <string name="code_title">Source Code</string>
 </resources>

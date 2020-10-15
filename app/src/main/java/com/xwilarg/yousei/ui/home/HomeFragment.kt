@@ -1,5 +1,6 @@
 package com.xwilarg.yousei.ui.home
 
+import android.content.Context.MODE_PRIVATE
 import com.xwilarg.yousei.R
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.xwilarg.yousei.learning.LearningType
@@ -20,11 +22,6 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
 class HomeFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-       // setContentView(com.xwilarg.yousei.R.layout.fragment_home)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +36,14 @@ class HomeFragment : Fragment() {
                     jlptValue = value
             }
         }}
+
+        val preferences = requireActivity().getPreferences(MODE_PRIVATE)
+        if (preferences.contains("defaultMode")) {
+            (v.radioGroup as RadioGroup).check(preferences.getInt("defaultMode", 0))
+        }
+        if (preferences.contains("defaultJlpt")) {
+            (v.jlptValue as EditText).setText(preferences.getString("defaultJlpt", "6"))
+        }
 
         (v.radioChoices as Button).setOnClickListener {
             onRadioGroupClick(it)
@@ -166,6 +171,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun getQuizzType() : Class<*> {
+
+        // This function is called when we go in a quizz
+        // We use that time to save the last quizz user preferences
+        val preferences = requireActivity().getPreferences(MODE_PRIVATE)
+        with (preferences.edit()) {
+            putInt("defaultMode", (requireActivity().findViewById<RadioGroup>(R.id.radioGroup)).checkedRadioButtonId)
+            putString("defaultJlpt", (requireActivity().findViewById<EditText>(R.id.jlptValue)).text.toString())
+            apply()
+        }
+
+
         return when {
             requireActivity().findViewById<RadioButton>(R.id.radioChoices).isChecked -> {
                 QuizzChoicesActivity::class.java

@@ -11,7 +11,7 @@ class QuizzDrawActivity : QuizzCommon() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quizz_draw)
-        preloadWithDownload(applicationContext)
+        preloadWithDownload()
     }
 
     fun answer(view: View) {

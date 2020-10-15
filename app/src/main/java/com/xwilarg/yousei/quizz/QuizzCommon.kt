@@ -1,7 +1,6 @@
 package com.xwilarg.yousei.quizz;
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
@@ -12,20 +11,24 @@ import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.common.model.RemoteModelManager
 import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModel
 import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModelIdentifier
+import com.xwilarg.yousei.MainActivity
 import com.xwilarg.yousei.R
 import com.xwilarg.yousei.learning.*
-import com.xwilarg.yousei.ui.home.HomeFragment
 
 open class QuizzCommon : AppCompatActivity() {
 
-    fun preloadWithDownload(context: Context) { // Download OCR data from draw quizz
+    fun preloadWithDownload() { // Download OCR data from draw quizz
         var modelIdentifier = DigitalInkRecognitionModelIdentifier.fromLanguageTag("ja")
         var model: DigitalInkRecognitionModel =
             DigitalInkRecognitionModel.builder(modelIdentifier!!).build()
         val remoteModelManager = RemoteModelManager.getInstance()
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Updating OCR data, please wait...")
+        builder.setPositiveButton("Cancel") { _: DialogInterface, _: Int ->
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         val popup = builder.create()
+        popup.setCanceledOnTouchOutside(false)
         popup.show()
         remoteModelManager.isModelDownloaded(model).addOnSuccessListener { res: Boolean ->
             if (res) {
@@ -41,18 +44,22 @@ open class QuizzCommon : AppCompatActivity() {
                         popup.dismiss()
                         builder.setMessage("An error occurred while downloading OCR data: " + e.message!!)
                         builder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
-                            startActivity(Intent(this, HomeFragment::class.java))
+                            startActivity(Intent(this, MainActivity::class.java))
                         }
-                        builder.create().show()
+                        val p = builder.create()
+                        p.setCanceledOnTouchOutside(false)
+                        p.show()
                     }
             }
         }.addOnFailureListener { e: Exception ->
             popup.hide()
             builder.setMessage("An error occurred while checking OCR data: " + e.message!!)
             builder.setPositiveButton("OK") { _: DialogInterface, _: Int ->
-                startActivity(Intent(this, HomeFragment::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
             }
-            builder.create().show()
+            val p = builder.create()
+            p.setCanceledOnTouchOutside(false)
+            p.show()
         }
     }
 

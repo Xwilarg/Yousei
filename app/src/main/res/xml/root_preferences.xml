@@ -1,0 +1,24 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/cache_header">
+
+        <Preference
+            app:key="ocr"
+            app:title="@string/ocr_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/about_header">
+
+        <Preference
+            app:key="about"
+            app:title="@string/about_title" />
+
+        <Preference
+            android:key="code"
+            app:title="@string/code_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
