@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
         val preferences = requireActivity().getPreferences(MODE_PRIVATE)
         if (preferences.contains("defaultMode")) {
             (v.radioGroup as RadioGroup).check(preferences.getInt("defaultMode", 0))
+            onRadioGroupClick()
         }
         if (preferences.contains("defaultJlpt")) {
             (v.jlptValue as EditText).setText(preferences.getString("defaultJlpt", "6"))
