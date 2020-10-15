@@ -135,7 +135,7 @@ open class QuizzCommon : AppCompatActivity() {
             }
         }
         // Since sentences are big, we reduce the text size
-        if (intentValue == LearningType.SENTENCE) {
+        if (intentValue == LearningType.SENTENCE || intentValue == LearningType.COMPLETE) {
             findViewById<TextView>(R.id.textQuizz).textSize = 30f
             findViewById<TextView>(R.id.textQuizzHelp).textSize = 20f
         }
