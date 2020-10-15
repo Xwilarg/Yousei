@@ -9,5 +9,6 @@ enum class LearningType {
     VOCABULARY_TRANSLATE,
     VOCABULARY_READ,
     VOCABULARY_CONVERT,
-    SENTENCE
+    SENTENCE,
+    COMPLETE
 }

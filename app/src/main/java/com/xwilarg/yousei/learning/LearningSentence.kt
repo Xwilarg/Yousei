@@ -5,7 +5,7 @@ import com.google.gson.reflect.TypeToken
 import com.xwilarg.yousei.quizz.IsCorrect
 import kotlin.random.Random
 
-class SentenceLearning : ILearning {
+class LearningSentence : ILearning {
 
     constructor(content: String, contentParticles: String, contentHiraganas: String) {
         sentences = Gson().fromJson(content, Array<SentenceInfo>::class.java)
@@ -20,7 +20,7 @@ class SentenceLearning : ILearning {
         return Pair(fullSentence, currentSentence.meaning)
     }
 
-    fun prepareSentence() : String {
+    fun prepareSentence() : String { // TODO: Can be move in a static function since it's also used in LearningComplete
         fullSentence = ""
         var rParticle = Random.nextInt(0, currentSentence.particleCount) // rParticle contains which particle must be guessed
         for (word in currentSentence.words) {

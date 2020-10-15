@@ -234,6 +234,17 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineTitle2"
         app:layout_constraintVertical_bias="0.492" />
 
+    <Button
+        android:id="@+id/buttonQuizzComplete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sentences"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitle2"
+        app:layout_constraintVertical_bias="0.492" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

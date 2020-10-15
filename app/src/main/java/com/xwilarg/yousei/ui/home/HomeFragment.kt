@@ -16,6 +16,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.xwilarg.yousei.learning.LearningType
 import com.xwilarg.yousei.quizz.QuizzChoicesActivity
+import com.xwilarg.yousei.quizz.QuizzCompleteActivity
 import com.xwilarg.yousei.quizz.QuizzDrawActivity
 import com.xwilarg.yousei.quizz.QuizzNormalActivity
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -40,7 +41,7 @@ class HomeFragment : Fragment() {
         val preferences = requireActivity().getPreferences(MODE_PRIVATE)
         if (preferences.contains("defaultMode")) {
             (v.radioGroup as RadioGroup).check(preferences.getInt("defaultMode", 0))
-            onRadioGroupClick()
+            onRadioGroupClick(v)
         }
         if (preferences.contains("defaultJlpt")) {
             (v.jlptValue as EditText).setText(preferences.getString("defaultJlpt", "6"))
@@ -92,6 +93,10 @@ class HomeFragment : Fragment() {
 
         (v.buttonQuizzParticles as Button).setOnClickListener {
             startGameSentence(it)
+        }
+
+        (v.buttonQuizzComplete as Button).setOnClickListener {
+            startGameComplete(it)
         }
 
         return v
@@ -167,6 +172,13 @@ class HomeFragment : Fragment() {
     fun startGameSentence(view: View) {
         val intent = Intent(activity, getQuizzType())
         intent.putExtra("LEARNING_TYPE", LearningType.SENTENCE)
+        intent.putExtra("JLPT", jlptValue)
+        startActivity(intent)
+    }
+
+    fun startGameComplete(view: View) {
+        val intent = Intent(activity, QuizzCompleteActivity::class.java)
+        intent.putExtra("LEARNING_TYPE", LearningType.COMPLETE)
         intent.putExtra("JLPT", jlptValue)
         startActivity(intent)
     }

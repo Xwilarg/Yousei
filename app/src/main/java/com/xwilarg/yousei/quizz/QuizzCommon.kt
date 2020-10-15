@@ -94,7 +94,7 @@ open class QuizzCommon : AppCompatActivity() {
                     ).bufferedReader().use { it.readText() })
             }
             LearningType.SENTENCE -> {
-                SentenceLearning(this.resources.openRawResource(
+                LearningSentence(this.resources.openRawResource(
                     R.raw.sentences
                 ).bufferedReader().use { it.readText() },
                     this.resources.openRawResource(R.raw.particles)
@@ -123,13 +123,18 @@ open class QuizzCommon : AppCompatActivity() {
                     getKanjiJlpt(jlptValue)
                 ).bufferedReader().use { it.readText() })
             }
+            LearningType.COMPLETE -> {
+                LearningComplete(this.resources.openRawResource(
+                    R.raw.sentences
+                ).bufferedReader().use { it.readText() })
+            }
             else -> {
                 LearningVocabularyConvert(this.resources.openRawResource(
                     getVocabularyJlpt(jlptValue)
                 ).bufferedReader().use { it.readText() })
             }
         }
-        // Since sentences are big the text size
+        // Since sentences are big, we reduce the text size
         if (intentValue == LearningType.SENTENCE) {
             findViewById<TextView>(R.id.textQuizz).textSize = 30f
             findViewById<TextView>(R.id.textQuizzHelp).textSize = 20f
