@@ -41,7 +41,16 @@ class HomeFragment : Fragment() {
         val preferences = requireActivity().getPreferences(MODE_PRIVATE)
         if (preferences.contains("defaultMode")) {
             (v.radioGroup as RadioGroup).check(preferences.getInt("defaultMode", 0))
-            onRadioGroupClick(v)
+
+            // TODO: Dupplicate with onRadioGroupClick
+            val isDraw =  v.findViewById<RadioButton>(R.id.radioDraw).isChecked
+            v.findViewById<Button>(R.id.buttonQuizzHiragana).isEnabled = !isDraw
+            v.findViewById<Button>(R.id.buttonQuizzKatakana).isEnabled = !isDraw
+            v.findViewById<Button>(R.id.buttonQuizzKanji).isEnabled = !isDraw
+            v.findViewById<Button>(R.id.buttonQuizzVocabulary).isEnabled = !isDraw
+            val isInput =  v.findViewById<RadioButton>(R.id.radioFreeText).isChecked
+            v.findViewById<Button>(R.id.buttonQuizzKanjiConvert).isEnabled = !isInput
+            v.findViewById<Button>(R.id.buttonQuizzVocabularyConvert).isEnabled = !isInput
         }
         if (preferences.contains("defaultJlpt")) {
             (v.jlptValue as EditText).setText(preferences.getString("defaultJlpt", "6"))
