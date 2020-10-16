@@ -30,6 +30,10 @@ class LearningVocabularyRead : ILearning {
         return currentWord.word
     }
 
+    override fun displayCurrentInAnswer(): Boolean {
+        return true
+    }
+
     override fun getRandomChoices(): ArrayList<String> {
         var choices = arrayListOf<String>()
         choices.add(currentWord.reading)

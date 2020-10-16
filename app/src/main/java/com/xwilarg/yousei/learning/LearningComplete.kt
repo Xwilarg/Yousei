@@ -13,7 +13,9 @@ class LearningComplete : ILearning {
 
     override fun getQuestion() : Pair<String, String> {
         currentSentence = sentences[Random.nextInt(0, sentences.size)]
-        fullSentence = currentSentence.words.joinToString(" ")
+        val tmp = currentSentence.words.map { it.word }.toMutableList()
+        tmp.shuffle()
+        fullSentence = tmp.joinToString(" ")
         return Pair(currentSentence.meaning, "")
     }
 
@@ -26,7 +28,11 @@ class LearningComplete : ILearning {
     }
 
     override fun getCurrent(): String {
-        return fullSentence//"" // getCurrent is used to display the question in the answer but in this mode, the question is too big to fit
+        return fullSentence
+    }
+
+    override fun displayCurrentInAnswer(): Boolean {
+        return false
     }
 
     override fun getRandomChoices(): ArrayList<String> {

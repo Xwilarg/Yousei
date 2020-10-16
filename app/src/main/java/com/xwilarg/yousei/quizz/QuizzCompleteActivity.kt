@@ -26,9 +26,7 @@ class QuizzCompleteActivity : QuizzCommon() {
         val answer = learning.getCurrent()
 
         val layout = findViewById<View>(R.id.choices) as LinearLayout
-        Log.d(learning.getCurrent(), learning.getCurrent())
         for ((i, word) in answer.split(' ').withIndex()) {
-            Log.d("", word)
             val button = Button(this)
             button.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,

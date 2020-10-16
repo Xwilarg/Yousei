@@ -44,6 +44,10 @@ class LearningKanjiConvert : ILearning {
         }
     }
 
+    override fun displayCurrentInAnswer(): Boolean {
+        return true
+    }
+
     override fun getRandomChoices(): ArrayList<String> {
         var choices = arrayListOf<String>()
         var goodAnswer = currentKanji.kanji

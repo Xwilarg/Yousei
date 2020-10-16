@@ -53,6 +53,10 @@ class LearningSentence : ILearning {
         return "" // getCurrent is used to display the question in the answer but in this mode, the question is too big to fit
     }
 
+    override fun displayCurrentInAnswer(): Boolean {
+        return false
+    }
+
     override fun getRandomChoices(): ArrayList<String> {
         var choices = arrayListOf<String>()
         choices.add(particleAnswer)

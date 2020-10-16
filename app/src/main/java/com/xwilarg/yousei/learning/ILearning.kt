@@ -12,6 +12,8 @@ interface ILearning {
 
     fun getCurrent() : String
 
+    fun displayCurrentInAnswer() : Boolean // Do we display the entry in the answer?
+
     fun getRandomChoices() : ArrayList<String>
 
     fun getAnswer(answer: String) : String

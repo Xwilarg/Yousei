@@ -89,8 +89,8 @@
         <LinearLayout
             android:id="@+id/choices"
             android:layout_width="413dp"
-            android:layout_height="87dp"
-            android:orientation="vertical"
+            android:layout_height="136dp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -135,39 +135,13 @@
             app:layout_constraintGuide_percent=".35" />
 
         <TextView
-            android:id="@+id/textAnswerYou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/guidelineEnd"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineAnswer"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textAnswerYouTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/textAnswerYou"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineAnswer"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelineAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".5" />
-
-        <TextView
             android:id="@+id/textAnswerHim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/guidelineEnd"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guidelineAnswer"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -176,7 +150,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/textAnswerHim"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guidelineAnswer"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline

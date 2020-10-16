@@ -186,11 +186,15 @@ open class QuizzCommon : AppCompatActivity() {
 
     fun checkAnswerInternal(myAnswer: String, answer: Pair<IsCorrect, String>) {
         // Display your answer and the correct one
-        findViewById<TextView>(R.id.textLastKanji).text = learning.getCurrent()
-        findViewById<TextView>(R.id.textAnswerYouTitle).text = "Your answer"
+        findViewById<TextView>(R.id.textLastKanji).text = if (learning.displayCurrentInAnswer()) {
+            learning.getCurrent()
+        } else {
+            ""
+        }
+        findViewById<TextView>(R.id.textAnswerYouTitle)?.text = "Your answer"
         findViewById<TextView>(R.id.textAnswerHimTitle).text = "Right answer"
 
-        findViewById<TextView>(R.id.textAnswerYou).text = learning.getAnswer(myAnswer)
+        findViewById<TextView>(R.id.textAnswerYou)?.text = learning.getAnswer(myAnswer)
 
         // If the answer is right, display green
         // If it's wrong, red

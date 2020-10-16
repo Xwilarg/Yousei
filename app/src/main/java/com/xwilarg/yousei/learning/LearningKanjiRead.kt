@@ -70,6 +70,10 @@ class LearningKanjiRead : ILearning {
         return currentKanji.kanji
     }
 
+    override fun displayCurrentInAnswer(): Boolean {
+        return true
+    }
+
     override fun getRandomChoices(): ArrayList<String> {
         var choices = arrayListOf<String>()
         var goodAnswer = kanjiInfoToKana(currentKanji)
