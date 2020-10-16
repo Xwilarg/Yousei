@@ -13,25 +13,8 @@ class LearningComplete : ILearning {
 
     override fun getQuestion() : Pair<String, String> {
         currentSentence = sentences[Random.nextInt(0, sentences.size)]
-        fullSentence = prepareSentence()
+        fullSentence = currentSentence.words.joinToString(" ")
         return Pair(currentSentence.meaning, "")
-    }
-
-    fun prepareSentence() : String {
-        fullSentence = ""
-        var rParticle = Random.nextInt(0, currentSentence.particleCount) // rParticle contains which particle must be guessed
-        for (word in currentSentence.words) {
-            if (word.isParticle) {
-                if (rParticle == 0) {
-                    rParticle--
-                    fullSentence += "??? "
-                    continue // We continue here so the word is not added to the sentence
-                }
-                rParticle--
-            }
-            fullSentence += word.word + " "
-        }
-        return fullSentence.substring(0, fullSentence.length - 1) // We remove the last space
     }
 
     override fun checkAnswer(myAnswer: String) : Pair<IsCorrect, String> {
@@ -43,7 +26,7 @@ class LearningComplete : ILearning {
     }
 
     override fun getCurrent(): String {
-        return "" // getCurrent is used to display the question in the answer but in this mode, the question is too big to fit
+        return fullSentence//"" // getCurrent is used to display the question in the answer but in this mode, the question is too big to fit
     }
 
     override fun getRandomChoices(): ArrayList<String> {
@@ -51,7 +34,7 @@ class LearningComplete : ILearning {
     }
 
     override fun getAnswer(answer: String): String {
-        return fullSentence
+        return answer
     }
 
     var sentences: Array<SentenceInfo>

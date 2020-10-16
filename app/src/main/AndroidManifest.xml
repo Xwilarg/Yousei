@@ -25,6 +25,9 @@
         <activity
             android:name=".quizz.QuizzNormalActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".quizz.QuizzCompleteActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
