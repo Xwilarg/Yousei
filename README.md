@@ -4,7 +4,7 @@ An android app to help learning Japanese
 <img src="preview/01.jpg" width="250" alt="Preview 01"/> <img src="preview/02.jpg" width="250" alt="Preview 02"/> <img src="preview/03.jpg" width="250" alt="Preview 03"/><br/>
 <sup>Preview images may not be from the latest version of the app</sup>
 
-## Phylosophy
+## Philosophy
 Yet another application to learn Japanese... But why?<br/>
 There are a lot of app out there but there are some important points I'ld like to find more often:
  - Gamification: I think it's easier to learn with things like experience points and achievements
