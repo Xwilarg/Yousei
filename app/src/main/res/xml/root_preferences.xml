@@ -1,6 +1,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <PreferenceCategory android:title="Language">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="useRomaji"
+            android:title="Use romaji instead of kana" />
+    </PreferenceCategory>
     <PreferenceCategory app:title="@string/cache_header">
 
         <Preference
