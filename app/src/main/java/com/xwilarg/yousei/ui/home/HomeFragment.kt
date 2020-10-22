@@ -14,11 +14,13 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceFragmentCompat
 import com.xwilarg.yousei.learning.LearningType
 import com.xwilarg.yousei.quizz.QuizzChoicesActivity
 import com.xwilarg.yousei.quizz.QuizzCompleteActivity
 import com.xwilarg.yousei.quizz.QuizzDrawActivity
 import com.xwilarg.yousei.quizz.QuizzNormalActivity
+import com.xwilarg.yousei.ui.settings.SettingsFragment
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 

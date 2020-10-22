@@ -4,9 +4,11 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.preference.PreferenceManager
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.common.model.RemoteModelManager
 import com.google.mlkit.vision.digitalink.DigitalInkRecognitionModel
@@ -65,6 +67,9 @@ open class QuizzCommon : AppCompatActivity() {
 
     fun preload()
     {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        useRomaji = preferences.getBoolean("useRomaji", false)
+
         // Load the right file in the right learning class given the intent from the main menu
         var intentValue = intent.getSerializableExtra("LEARNING_TYPE")
         var jlptValue = intent.getSerializableExtra("JLPT") as Int
@@ -228,4 +233,5 @@ open class QuizzCommon : AppCompatActivity() {
     open fun loadQuestionAfter() { } // virtual function called after the question was loaded
 
     lateinit var learning: ILearning // learning is the "learning type" (is the user studying kanjis, hiraganas, etc...)
+    var useRomaji = false
 }
