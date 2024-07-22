@@ -58,7 +58,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="200dp" />
 
-        <com.xwilarg.yousei.DrawingView
+        <eu.zirk.yousei.DrawingView
             android:id="@+id/viewDraw"
             android:layout_width="0dp"
             android:layout_height="0dp"

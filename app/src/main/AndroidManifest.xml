@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xwilarg.yousei">
+    package="eu.zirk.yousei">
 
     <application
         android:allowBackup="true"
@@ -8,8 +8,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name="eu.zirk.yousei.MainActivity"
+            android:label="@string/app_name"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,16 +19,16 @@
         </activity>
         <activity
             android:name=".quizz.QuizzDrawActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="eu.zirk.yousei.MainActivity" />
         <activity
             android:name=".quizz.QuizzChoicesActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="eu.zirk.yousei.MainActivity" />
         <activity
             android:name=".quizz.QuizzNormalActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="eu.zirk.yousei.MainActivity" />
         <activity
             android:name=".quizz.QuizzCompleteActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="eu.zirk.yousei.MainActivity" />
     </application>
 
 </manifest>
